@@ -13,7 +13,7 @@ const CONFIG = {
   GITBOOK_MENU_SEARCH: true, // 显示搜索
 
   // 导航文章自动排他折叠
-  GITBOOK_EXCLUSIVE_COLLAPSE: true, // 一次只展开一个分类，其它文件夹自动关闭。
+  GITBOOK_EXCLUSIVE_COLLAPSE: false, // 一次只展开一个分类，其它文件夹自动关闭。
 
   GITBOOK_FOLDER_HOVER_EXPAND: false, // 左侧导航文件夹鼠标悬停时自动展开；若为false，则要点击才能展开
 
