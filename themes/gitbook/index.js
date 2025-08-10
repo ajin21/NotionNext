@@ -331,6 +331,51 @@ const LayoutSlug = props => {
         }
       }, waiting404)
     }
+
+    // 处理外部链接
+    if (post && isBrowser) {
+      const handleExternalLinks = () => {
+        const links = document.querySelectorAll('#article-wrapper a[href]')
+        
+        links.forEach(link => {
+          const href = link.getAttribute('href')
+          
+          // 检查是否为外部链接
+          if (href && 
+              href.startsWith('http') && 
+              !href.includes('localhost') && 
+              !href.includes('127.0.0.1') &&
+              !href.includes(window.location.hostname)) {
+            
+            // 设置外部链接属性
+            link.setAttribute('target', '_blank')
+            link.setAttribute('rel', 'noopener noreferrer')
+          }
+        })
+      }
+
+      // 延时处理，确保文章内容已加载
+      const timer = setTimeout(handleExternalLinks, 1000)
+      
+      // 监听DOM变化，处理动态添加的链接
+      const observer = new MutationObserver(() => {
+        handleExternalLinks()
+      })
+      
+      const articleWrapper = document.querySelector('#article-wrapper')
+      if (articleWrapper) {
+        observer.observe(articleWrapper, {
+          childList: true,
+          subtree: true
+        })
+      }
+
+      // 清理函数
+      return () => {
+        clearTimeout(timer)
+        observer.disconnect()
+      }
+    }
   }, [post])
   return (
     <>
