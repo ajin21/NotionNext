@@ -22,7 +22,7 @@ const Style = () => {
       /* ===== 以下为可选样式模块 ===== */
       /* 需要时可以逐个添加，每个模块都有详细注释 */
 
-      /* ===== 超链接模块 - 丝滑无回弹悬停效果 ===== */
+      /* ===== 超链接模块 - 带回弹效果的悬停动画 ===== */
       
       /* 1. 文章内容区域的超链接基础样式 */
       .notion-page a,
@@ -33,9 +33,9 @@ const Style = () => {
         text-decoration: none;               /* 去除默认下划线 */
         position: relative;                  /* 为伪元素定位 */
         display: inline;                     /* 行内元素，保持文字流 */
-        padding: 1px 3px;                    /* 减少内边距避免对齐问题 */
-        border-radius: 4px;                  /* 稍小的圆角 */
-        transition: all 0.25s ease-out;     /* 更丝滑的缓动函数，无回弹 */
+        padding: 2px 6px;                    /* 适中的内边距 */
+        border-radius: 8px;                  /* 圆角矩形 */
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* 回弹缓动函数 */
         background: transparent;             /* 透明背景 */
         vertical-align: baseline;            /* 确保垂直对齐 */
         line-height: inherit;                /* 继承行高 */
@@ -57,7 +57,7 @@ const Style = () => {
         border-radius: 1px;                 /* 圆角下划线 */
       }
 
-      /* 3. 圆角矩形背景动画效果 */
+      /* 3. 圆角矩形背景动画效果 - 带回弹 */
       .notion-page a::after,
       .notion-text a::after,
       article a::after,
@@ -68,10 +68,10 @@ const Style = () => {
         left: 50%;                          /* 水平居中 */
         width: 0;                           /* 初始宽度为0 */
         height: 100%;                       /* 全高 */
-        background: rgba(16, 185, 129, 0.08); /* 淡绿背景 */
-        border-radius: 6px;                 /* 圆角 */
+        background: rgba(16, 185, 129, 0.12); /* 稍深的淡绿背景 */
+        border-radius: 8px;                 /* 更大的圆角 */
         transform: translateX(-50%);        /* 居中对齐 */
-        transition: width 0.25s ease-out;   /* 丝滑展开，无回弹 */
+        transition: width 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* 回弹效果 */
         z-index: -1;                        /* 置于文字下方 */
       }
 
@@ -81,7 +81,6 @@ const Style = () => {
       article a:hover,
       .post-content a:hover {
         color: #059669;                     /* 深翡翠绿 */
-        transform: translateY(-1px);        /* 轻微上移 */
         box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15); /* 柔和阴影 */
       }
 
@@ -432,4 +431,3 @@ const Style = () => {
 }
 
 export { Style }
-s
