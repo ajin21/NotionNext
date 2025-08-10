@@ -171,40 +171,144 @@ const Style = () => {
         color: #d1d5db;                       /* 浅色文字 */
       }
 
-      /* ===== 一级标题模块 - 翡翠绿美化 ===== */
+      /* ===== 一级标题模块 - 高级美化效果 ===== */
       
       /* 1. 一级标题基础样式 */
       h1 {
-        font-size: 2.25rem;                   /* 大字号 */
-        font-weight: 800;                     /* 粗体 */
-        color: #1f2937;                       /* 深灰色文字 */
-        margin: 32px 0 24px 0;                /* 上下间距 */
-        padding-bottom: 16px;                 /* 底部内边距 */
-        border-bottom: 2px solid #e5e7eb;     /* 底部边框线 */
-        position: relative;                   /* 为伪元素定位 */
-        line-height: 1.2;                    /* 行高 */
+        font-size: 2.5rem;                   /* 更大的字号 */
+        font-weight: 800;                    /* 粗体 */
+        color: #1f2937;                      /* 深灰色文字 */
+        margin: 40px 0 32px 0;               /* 更大的上下间距 */
+        padding: 20px 0 24px 0;              /* 内边距 */
+        position: relative;                  /* 为伪元素定位 */
+        line-height: 1.2;                   /* 行高 */
+        letter-spacing: -0.025em;            /* 字母间距 */
+        background: linear-gradient(135deg, #1f2937 0%, #374151 100%); /* 文字渐变 */
+        background-clip: text;               /* 渐变裁剪到文字 */
+        -webkit-background-clip: text;       /* Safari 兼容 */
+        -webkit-text-fill-color: transparent; /* 透明文字显示渐变 */
+        transition: all 0.3s ease;          /* 平滑过渡 */
       }
 
-      /* 2. 一级标题装饰条 */
+      /* 2. 标题背景装饰 - 柔和的背景光晕 */
+      h1::before {
+        content: '';                         /* 创建伪元素 */
+        position: absolute;                  /* 绝对定位 */
+        top: 50%;                           /* 垂直居中 */
+        left: -20px;                        /* 左侧偏移 */
+        width: calc(100% + 40px);           /* 宽度超出标题 */
+        height: 60px;                       /* 背景高度 */
+        background: linear-gradient(90deg, 
+          rgba(16, 185, 129, 0.05) 0%, 
+          rgba(16, 185, 129, 0.08) 50%, 
+          rgba(16, 185, 129, 0.05) 100%
+        );                                  /* 柔和的绿色背景渐变 */
+        border-radius: 12px;                /* 圆角背景 */
+        transform: translateY(-50%);        /* 垂直居中 */
+        z-index: -1;                        /* 置于文字下方 */
+        opacity: 0;                         /* 初始透明 */
+        transition: opacity 0.4s ease;     /* 透明度动画 */
+      }
+
+      /* 3. 标题装饰条 - 动态渐变线条 */
       h1::after {
-        content: '';                          /* 创建伪元素 */
-        position: absolute;                   /* 绝对定位 */
-        bottom: -2px;                         /* 位于底部边框上 */
-        left: 0;                             /* 从左侧开始 */
-        width: 80px;                         /* 装饰条宽度 */
-        height: 4px;                         /* 装饰条高度 */
-        background: linear-gradient(90deg, #10B981, #059669); /* 翡翠绿渐变 */
-        border-radius: 2px;                  /* 圆角 */
+        content: '';                         /* 创建伪元素 */
+        position: absolute;                  /* 绝对定位 */
+        bottom: 0;                          /* 底部对齐 */
+        left: 0;                            /* 从左侧开始 */
+        width: 0;                           /* 初始宽度为0 */
+        height: 4px;                        /* 装饰条高度 */
+        background: linear-gradient(90deg, 
+          #10B981 0%, 
+          #059669 50%, 
+          #047857 100%
+        );                                  /* 三色渐变 */
+        border-radius: 2px;                 /* 圆角 */
+        box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3); /* 发光效果 */
+        transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* 丝滑展开动画 */
       }
 
-      /* 3. 暗色模式下的一级标题 */
+      /* 4. 悬停效果 */
+      h1:hover::before {
+        opacity: 1;                         /* 显示背景光晕 */
+      }
+
+      h1:hover::after {
+        width: 120px;                       /* 装饰条展开 */
+      }
+
+      h1:hover {
+        transform: translateY(-2px);        /* 轻微上移 */
+        text-shadow: 0 4px 12px rgba(16, 185, 129, 0.15); /* 文字阴影 */
+      }
+
+      /* 5. 标题左侧装饰点 */
+      h1:before {
+        content: '●';                       /* 装饰点 */
+        position: absolute;                 /* 绝对定位 */
+        left: -30px;                        /* 左侧位置 */
+        top: 50%;                          /* 垂直居中 */
+        transform: translateY(-50%);       /* 居中对齐 */
+        color: #10B981;                    /* 翡翠绿色 */
+        font-size: 0.8rem;                 /* 小字号 */
+        opacity: 0.6;                      /* 半透明 */
+        transition: all 0.3s ease;        /* 动画效果 */
+      }
+
+      h1:hover:before {
+        opacity: 1;                        /* 悬停时完全显示 */
+        transform: translateY(-50%) scale(1.2); /* 放大效果 */
+      }
+
+      /* 6. 暗色模式下的一级标题 */
       .dark h1 {
-        color: #f9fafb;                      /* 浅色文字 */
-        border-bottom-color: #374151;        /* 暗色边框 */
+        background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%); /* 暗色模式文字渐变 */
+        background-clip: text;              /* 渐变裁剪到文字 */
+        -webkit-background-clip: text;      /* Safari 兼容 */
+        -webkit-text-fill-color: transparent; /* 透明文字显示渐变 */
+      }
+
+      .dark h1::before {
+        background: linear-gradient(90deg, 
+          rgba(52, 211, 153, 0.08) 0%, 
+          rgba(52, 211, 153, 0.12) 50%, 
+          rgba(52, 211, 153, 0.08) 100%
+        );                                  /* 暗色模式背景渐变 */
       }
 
       .dark h1::after {
-        background: linear-gradient(90deg, #34D399, #10B981); /* 暗色模式渐变 */
+        background: linear-gradient(90deg, 
+          #34D399 0%, 
+          #10B981 50%, 
+          #059669 100%
+        );                                  /* 暗色模式装饰条渐变 */
+        box-shadow: 0 2px 8px rgba(52, 211, 153, 0.4); /* 暗色模式发光 */
+      }
+
+      .dark h1:before {
+        color: #34D399;                     /* 暗色模式装饰点 */
+      }
+
+      .dark h1:hover {
+        text-shadow: 0 4px 12px rgba(52, 211, 153, 0.2); /* 暗色模式文字阴影 */
+      }
+
+      /* 7. 响应式优化 */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2rem;                  /* 移动端较小字号 */
+          margin: 24px 0 20px 0;           /* 移动端较小间距 */
+          padding: 16px 0 20px 0;          /* 移动端内边距 */
+        }
+        
+        h1:before {
+          left: -20px;                     /* 移动端装饰点位置 */
+        }
+        
+        h1::before {
+          left: -10px;                     /* 移动端背景位置 */
+          width: calc(100% + 20px);        /* 移动端背景宽度 */
+        }
       }
 
     `}</style>
