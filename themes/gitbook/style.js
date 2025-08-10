@@ -22,7 +22,7 @@ const Style = () => {
       /* ===== 以下为可选样式模块 ===== */
       /* 需要时可以逐个添加，每个模块都有详细注释 */
 
-      /* ===== 超链接模块 - 高级丝滑悬停效果 ===== */
+      /* ===== 超链接模块 - 丝滑无回弹悬停效果 ===== */
       
       /* 1. 文章内容区域的超链接基础样式 */
       .notion-page a,
@@ -35,7 +35,7 @@ const Style = () => {
         display: inline-block;               /* 行内块元素 */
         padding: 2px 4px;                    /* 基础内边距 */
         border-radius: 6px;                  /* 圆角 */
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* 丝滑缓动函数 */
+        transition: all 0.25s ease-out;     /* 更丝滑的缓动函数，无回弹 */
         background: transparent;             /* 透明背景 */
         overflow: hidden;                    /* 隐藏溢出 */
       }
@@ -52,7 +52,7 @@ const Style = () => {
         width: 0;                           /* 初始宽度为0 */
         height: 2px;                        /* 下划线高度 */
         background: linear-gradient(90deg, #10B981, #059669); /* 渐变下划线 */
-        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* 宽度动画 */
+        transition: width 0.3s ease-out;    /* 丝滑展开，无回弹 */
         border-radius: 1px;                 /* 圆角下划线 */
       }
 
@@ -70,7 +70,7 @@ const Style = () => {
         background: rgba(16, 185, 129, 0.08); /* 淡绿背景 */
         border-radius: 6px;                 /* 圆角 */
         transform: translateX(-50%);        /* 居中对齐 */
-        transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* 宽度动画 */
+        transition: width 0.25s ease-out;   /* 丝滑展开，无回弹 */
         z-index: -1;                        /* 置于文字下方 */
       }
 
@@ -243,7 +243,7 @@ const Style = () => {
       .nav,
       .navbar,
       header nav {
-        font-weight: 500;                   /* 中等粗细 */
+        font-weight: 400;                   /* 正常粗细，不加粗 */
         letter-spacing: 0.025em;            /* 轻微字母间距 */
       }
 
@@ -253,8 +253,8 @@ const Style = () => {
       .navbar a,
       header nav a,
       .nav-link {
-        font-weight: 500;                   /* 中等粗细 */
-        color: #374151;                     /* 深灰色 */
+        font-weight: 400;                   /* 正常粗细，不加粗 */
+        color: #6b7280;                     /* 更淡的中灰色 */
         text-decoration: none;              /* 去除下划线 */
         padding: 8px 12px;                  /* 内边距 */
         border-radius: 6px;                 /* 圆角 */
@@ -281,7 +281,7 @@ const Style = () => {
       .nav-link.active {
         color: #059669;                     /* 深翡翠绿 */
         background-color: rgba(16, 185, 129, 0.12); /* 稍深的背景 */
-        font-weight: 600;                   /* 稍粗的字体 */
+        font-weight: 500;                   /* 激活状态稍微加粗一点 */
       }
 
       /* 5. 暗色模式导航样式 */
@@ -290,7 +290,7 @@ const Style = () => {
       .dark .navbar a,
       .dark header nav a,
       .dark .nav-link {
-        color: #d1d5db;                     /* 浅灰色 */
+        color: #9ca3af;                     /* 更淡的浅灰色 */
       }
 
       .dark nav a:hover,
@@ -309,6 +309,7 @@ const Style = () => {
       .dark .nav-link.active {
         color: #6EE7B7;                     /* 更亮的绿色 */
         background-color: rgba(52, 211, 153, 0.15); /* 暗色模式激活背景 */
+        font-weight: 500;                   /* 暗色模式激活状态稍微加粗 */
       }
 
       /* ===== 统计板块样式优化 ===== */
