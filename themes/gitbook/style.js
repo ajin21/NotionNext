@@ -90,7 +90,7 @@ const Style = () => {
       /* ===== 以下为可选样式模块 ===== */
       /* 需要时可以逐个添加，每个模块都有详细注释 */
 
-      /* ===== 超链接模块 - 现代设计感悬停效果 ===== */
+      /* ===== 超链接模块 - 丝滑动画悬停效果 ===== */
       
       /* 1. 文章内容区域的超链接基础样式 */
       .notion-page a,
@@ -100,74 +100,89 @@ const Style = () => {
         color: #10B981;                      /* 翡翠绿 */
         text-decoration: none;               /* 去除默认下划线 */
         position: relative;                  /* 为伪元素定位 */
-        display: inline;                     /* 行内元素，完美水平对齐 */
-        padding: 0;                          /* 无内边距，避免对齐问题 */
-        margin: 0 1px;                       /* 极小的左右边距 */
-        transition: color 0.2s ease;        /* 只对颜色做过渡 */
+        display: inline;                     /* 行内元素，保持文字流 */
+        padding: 2px 4px;                    /* 适度内边距 */
+        margin: 0;                          /* 无外边距 */
+        border-radius: 4px;                 /* 圆角 */
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* 丝滑缓动 */
         vertical-align: baseline;            /* 基线对齐 */
-        line-height: inherit;                /* 继承行高 */
-        font-weight: inherit;                /* 继承字重 */
+        line-height: 1;                     /* 固定行高避免跳动 */
         background: transparent;             /* 透明背景 */
+        overflow: hidden;                    /* 隐藏溢出 */
       }
 
-      /* 2. 精致的下划线效果 - 始终显示，悬停时变粗 */
+      /* 2. 动态下划线 - 从左到右展开 */
       .notion-page a::before,
       .notion-text a::before,
       article a::before,
       .post-content a::before {
         content: '';                         /* 创建伪元素 */
         position: absolute;                  /* 绝对定位 */
-        bottom: -2px;                        /* 稍微离开文字底部 */
-        left: 0;                            /* 从左开始 */
-        width: 100%;                        /* 始终全宽 */
-        height: 1px;                        /* 细线 */
-        background: rgba(16, 185, 129, 0.4); /* 半透明翡翠绿 */
-        transition: all 0.2s ease;         /* 平滑过渡 */
-        border-radius: 0.5px;               /* 微圆角 */
+        bottom: 2px;                        /* 底部位置 */
+        left: 4px;                          /* 对齐内边距 */
+        width: 0;                           /* 初始宽度为0 */
+        height: 2px;                        /* 下划线高度 */
+        background: linear-gradient(90deg, #10B981, #34D399, #6EE7B7); /* 三色渐变 */
+        transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* 丝滑展开 */
+        border-radius: 1px;                 /* 圆角下划线 */
+        box-shadow: 0 0 8px rgba(16, 185, 129, 0.3); /* 发光效果 */
       }
 
-      /* 3. 悬停时的高亮背景 - 简洁设计 */
+      /* 3. 背景动画 - 从中心向外扩展 */
       .notion-page a::after,
       .notion-text a::after,
       article a::after,
       .post-content a::after {
         content: '';                         /* 创建伪元素 */
         position: absolute;                  /* 绝对定位 */
-        top: -1px;                          /* 稍微向上 */
-        left: -2px;                         /* 稍微向左 */
-        right: -2px;                        /* 稍微向右 */
-        bottom: -1px;                       /* 稍微向下 */
-        background: rgba(16, 185, 129, 0.06); /* 极淡的背景 */
-        border-radius: 3px;                 /* 小圆角 */
-        opacity: 0;                         /* 初始透明 */
-        transition: opacity 0.2s ease;     /* 透明度过渡 */
+        top: 0;                             /* 顶部对齐 */
+        left: 50%;                          /* 水平居中 */
+        width: 0;                           /* 初始宽度为0 */
+        height: 100%;                       /* 全高 */
+        background: linear-gradient(135deg, 
+          rgba(16, 185, 129, 0.1) 0%, 
+          rgba(52, 211, 153, 0.08) 50%, 
+          rgba(110, 231, 183, 0.06) 100%
+        );                                  /* 渐变背景 */
+        border-radius: 4px;                 /* 圆角 */
+        transform: translateX(-50%) scaleX(0); /* 居中并缩放为0 */
+        transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* 缩放动画 */
         z-index: -1;                        /* 置于文字下方 */
       }
 
-      /* 4. 悬停时的效果 */
+      /* 4. 悬停时的主要效果 */
       .notion-page a:hover,
       .notion-text a:hover,
       article a:hover,
       .post-content a:hover {
         color: #059669;                     /* 深翡翠绿 */
+        transform: translateY(-1px);        /* 轻微上浮 */
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2); /* 柔和阴影 */
       }
 
-      /* 5. 悬停时下划线变粗变亮 */
+      /* 5. 悬停时下划线展开 */
       .notion-page a:hover::before,
       .notion-text a:hover::before,
       article a:hover::before,
       .post-content a:hover::before {
-        height: 2px;                        /* 悬停时变粗 */
-        background: rgba(16, 185, 129, 0.8); /* 悬停时更亮 */
-        bottom: -3px;                       /* 稍微下移 */
+        width: calc(100% - 8px);            /* 展开到几乎全宽 */
       }
 
-      /* 6. 悬停时背景显示 */
+      /* 6. 悬停时背景展开 */
       .notion-page a:hover::after,
       .notion-text a:hover::after,
       article a:hover::after,
       .post-content a:hover::after {
-        opacity: 1;                         /* 显示背景 */
+        transform: translateX(-50%) scaleX(1); /* 从中心展开 */
+      }
+
+      /* 7. 激活状态（点击时） */
+      .notion-page a:active,
+      .notion-text a:active,
+      article a:active,
+      .post-content a:active {
+        transform: translateY(0);           /* 按下时回到原位 */
+        transition: transform 0.1s ease;   /* 快速响应 */
       }
 
       /* 7. 暗色模式下的超链接样式 */
