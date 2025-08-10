@@ -116,10 +116,10 @@ const Style = () => {
         color: #4ADE80;
       }
 
-      /* 页脚超链接 */
+      /* 页脚超链接 - 去除下划线 */
       footer a {
         color: #6b7280;
-        text-decoration: underline;
+        text-decoration: none;
         transition: color 0.2s ease;
       }
 
@@ -389,7 +389,7 @@ const Style = () => {
         font-weight: 700;
         padding-left: 16px;
         border-left: 4px solid #22C55E;
-        margin: 28px 0 20px 0;
+        margin: 28px 0 32px 0;
       }
 
       .dark h2 {
@@ -411,28 +411,11 @@ const Style = () => {
         background: linear-gradient(to bottom, #4ADE80, #22C55E);
       }
 
-      /* 三级标题 - 简洁圆点 */
+      /* 三级标题 - 简洁样式 */
       h3 {
         font-size: 1.5rem;
         font-weight: 600;
-        padding-left: 20px;
         margin: 24px 0 16px 0;
-      }
-
-      h3::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 8px;
-        height: 8px;
-        background: #22C55E;
-        border-radius: 50%;
-      }
-
-      .dark h3::before {
-        background: #4ADE80;
       }
 
       /* 四级标题及以下 - 简单样式 */
@@ -470,6 +453,48 @@ const Style = () => {
 
       .dark .menu-item:hover {
         background: rgba(74, 222, 128, 0.15);
+      }
+
+      /* 搜索框样式重置 - 解决位置问题 */
+      .search-input,
+      input[type="search"],
+      .search-container input,
+      .algolia-search input {
+        all: unset;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 12px 16px;
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        color: #374151;
+        font-size: 14px;
+        transition: border-color 0.2s ease;
+      }
+
+      .search-input:focus,
+      input[type="search"]:focus,
+      .search-container input:focus,
+      .algolia-search input:focus {
+        outline: none;
+        border-color: #22C55E;
+      }
+
+      .dark .search-input,
+      .dark input[type="search"],
+      .dark .search-container input,
+      .dark .algolia-search input {
+        background: #374151;
+        border-color: #4b5563;
+        color: white;
+      }
+
+      .dark .search-input:focus,
+      .dark input[type="search"]:focus,
+      .dark .search-container input:focus,
+      .dark .algolia-search input:focus {
+        border-color: #4ADE80;
       }
 
 
