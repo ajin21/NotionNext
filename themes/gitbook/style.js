@@ -51,6 +51,17 @@ const Style = () => {
         color: #22C55E;
       }
 
+      /* 外部链接图标 */
+      .notion-page a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"]):before,
+      .notion-text a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"]):before,
+      article a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"]):before,
+      .post-content a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"]):before {
+        content: "🔗";
+        font-size: 0.8em;
+        margin-right: 4px;
+        opacity: 0.7;
+      }
+
       /* 超链接底部滑动线条效果 */
       .notion-page a::after,
       .notion-text a::after,
@@ -80,16 +91,7 @@ const Style = () => {
         background: #4ADE80;
       }
 
-      /* 外部链接标识 */
-      .notion-page a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"]):before,
-      .notion-text a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"]):before,
-      article a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"]):before,
-      .post-content a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"]):before {
-        content: "🔗";
-        font-size: 0.8em;
-        margin-right: 4px;
-        opacity: 0.7;
-      }
+
 
       /* 导航区域的超链接 */
       .nav-link,
@@ -140,32 +142,37 @@ const Style = () => {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
       }
 
-      /* 滚动条美化 - 简洁灰色 */
+      /* 滚动条美化 - 明显点 */
       ::-webkit-scrollbar {
-        width: 4px;
-        height: 4px;
+        width: 6px;
+        height: 6px;
       }
 
       ::-webkit-scrollbar-track {
-        background: transparent;
+        background: #f1f5f9;
+        border-radius: 3px;
       }
 
       ::-webkit-scrollbar-thumb {
-        background: #d1d5db;
-        border-radius: 2px;
+        background: #94a3b8;
+        border-radius: 3px;
         transition: background 0.2s ease;
       }
 
       ::-webkit-scrollbar-thumb:hover {
-        background: #9ca3af;
+        background: #64748b;
+      }
+
+      .dark ::-webkit-scrollbar-track {
+        background: #1e293b;
       }
 
       .dark ::-webkit-scrollbar-thumb {
-        background: #4b5563;
+        background: #64748b;
       }
 
       .dark ::-webkit-scrollbar-thumb:hover {
-        background: #6b7280;
+        background: #94a3b8;
       }
 
       /* 代码块美化 - 简洁设计 */
@@ -335,31 +342,119 @@ const Style = () => {
         border-color: rgba(255, 255, 255, 0.1);
       }
 
-      /* 标题美化 - 简洁设计 */
+      /* 标题美化 - 分级设计 */
       h1, h2, h3, h4, h5, h6 {
         position: relative;
         color: #1f2937;
         font-weight: 700;
         line-height: 1.4;
+        margin: 24px 0 16px 0;
       }
 
       .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
         color: #f9fafb;
       }
 
-      h1::after, h2::after {
+      /* 一级标题 - 最突出 */
+      h1 {
+        font-size: 2.25rem;
+        font-weight: 800;
+        margin: 32px 0 24px 0;
+        padding-bottom: 12px;
+        border-bottom: 2px solid #e5e7eb;
+      }
+
+      .dark h1 {
+        border-bottom-color: #374151;
+      }
+
+      h1::after {
         content: '';
         position: absolute;
-        bottom: -6px;
+        bottom: -2px;
         left: 0;
-        width: 40px;
-        height: 3px;
+        width: 60px;
+        height: 4px;
         background: #22C55E;
         border-radius: 2px;
       }
 
-      .dark h1::after, .dark h2::after {
+      .dark h1::after {
         background: #4ADE80;
+      }
+
+      /* 二级标题 - 左侧装饰条 */
+      h2 {
+        font-size: 1.875rem;
+        font-weight: 700;
+        padding-left: 16px;
+        border-left: 4px solid #22C55E;
+        margin: 28px 0 20px 0;
+      }
+
+      .dark h2 {
+        border-left-color: #4ADE80;
+      }
+
+      h2::before {
+        content: '';
+        position: absolute;
+        left: -4px;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: linear-gradient(to bottom, #22C55E, #16A34A);
+        border-radius: 2px;
+      }
+
+      .dark h2::before {
+        background: linear-gradient(to bottom, #4ADE80, #22C55E);
+      }
+
+      /* 三级标题 - 简洁圆点 */
+      h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        padding-left: 20px;
+        margin: 24px 0 16px 0;
+      }
+
+      h3::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 8px;
+        background: #22C55E;
+        border-radius: 50%;
+      }
+
+      .dark h3::before {
+        background: #4ADE80;
+      }
+
+      /* 四级标题及以下 - 简单样式 */
+      h4, h5, h6 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #374151;
+      }
+
+      .dark h4, .dark h5, .dark h6 {
+        color: #d1d5db;
+      }
+
+      h4::before {
+        content: '▸';
+        color: #22C55E;
+        margin-right: 8px;
+        font-weight: bold;
+      }
+
+      .dark h4::before {
+        color: #4ADE80;
       }
 
       /* 导航菜单美化 - 简洁设计 */
@@ -377,29 +472,7 @@ const Style = () => {
         background: rgba(74, 222, 128, 0.15);
       }
 
-      /* 搜索框美化 - 简洁设计 */
-      .search-input {
-        background: white;
-        border: 1px solid #e5e7eb;
-        border-radius: 8px;
-        padding: 12px 16px;
-        transition: border-color 0.2s ease;
-      }
 
-      .search-input:focus {
-        outline: none;
-        border-color: #22C55E;
-      }
-
-      .dark .search-input {
-        background: #374151;
-        border-color: #4b5563;
-        color: white;
-      }
-
-      .dark .search-input:focus {
-        border-color: #4ADE80;
-      }
 
       /* 加载动画 - 简洁设计 */
       .loading-spinner {
