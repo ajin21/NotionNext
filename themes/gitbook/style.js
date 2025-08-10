@@ -19,78 +19,10 @@ const Style = () => {
         box-shadow: 0px -3px 10px 0px rgba(0, 0, 0, 0.1);
       }
 
-      /* ===== 图标优化模块 ===== */
-      
-      /* 1. 修复 Notion 自定义 emoji 显示问题 */
-      img[data-src*="notion://custom_emoji"],
-      img[src*="notion://custom_emoji"] {
-        display: inline-block !important;   /* 强制显示 */
-        width: 24px !important;             /* 固定宽度 */
-        height: 24px !important;            /* 固定高度 */
-        object-fit: contain;                /* 保持比例 */
-        vertical-align: middle;             /* 垂直居中 */
-        margin-right: 8px;                  /* 右边距 */
-        border-radius: 4px;                 /* 圆角 */
-        background: rgba(16, 185, 129, 0.1); /* 淡绿背景 */
-        padding: 2px;                       /* 内边距 */
-        transition: all 0.2s ease;         /* 平滑过渡 */
-      }
-
-      /* 2. 图标悬停效果 */
-      img[data-src*="notion://custom_emoji"]:hover,
-      img[src*="notion://custom_emoji"]:hover {
-        background: rgba(16, 185, 129, 0.15); /* 悬停时背景稍深 */
-        transform: scale(1.05);             /* 轻微放大 */
-      }
-
-      /* 3. 暗色模式图标样式 */
-      .dark img[data-src*="notion://custom_emoji"],
-      .dark img[src*="notion://custom_emoji"] {
-        background: rgba(52, 211, 153, 0.12); /* 暗色模式背景 */
-      }
-
-      .dark img[data-src*="notion://custom_emoji"]:hover,
-      .dark img[src*="notion://custom_emoji"]:hover {
-        background: rgba(52, 211, 153, 0.18); /* 暗色模式悬停背景 */
-      }
-
-      /* 4. 通用图标样式优化 */
-      .icon,
-      .logo-icon,
-      [class*="icon"] {
-        display: inline-block;              /* 行内块元素 */
-        vertical-align: middle;             /* 垂直居中 */
-        transition: all 0.2s ease;         /* 平滑过渡 */
-      }
-
-      /* 5. SVG 图标优化 */
-      svg.icon,
-      .icon svg {
-        width: 24px;                        /* 标准图标大小 */
-        height: 24px;                       /* 标准图标大小 */
-        fill: currentColor;                 /* 使用当前文字颜色 */
-        stroke: currentColor;               /* 使用当前文字颜色 */
-      }
-
-      /* 6. 图标加载失败时的后备样式 */
-      img[data-src*="notion://custom_emoji"][src*="data:image/gif"] {
-        background: linear-gradient(135deg, #10B981, #059669); /* 渐变背景 */
-        position: relative;                 /* 相对定位 */
-      }
-
-      img[data-src*="notion://custom_emoji"][src*="data:image/gif"]::after {
-        content: '📚';                      /* 书本 emoji 作为后备 */
-        position: absolute;                 /* 绝对定位 */
-        top: 50%;                          /* 垂直居中 */
-        left: 50%;                         /* 水平居中 */
-        transform: translate(-50%, -50%);  /* 居中对齐 */
-        font-size: 14px;                   /* 字体大小 */
-      }
-
       /* ===== 以下为可选样式模块 ===== */
       /* 需要时可以逐个添加，每个模块都有详细注释 */
 
-      /* ===== 超链接模块 - 流畅悬停效果 ===== */
+      /* ===== 超链接模块 - 丝滑无回弹悬停效果 ===== */
       
       /* 1. 文章内容区域的超链接基础样式 */
       .notion-page a,
@@ -100,12 +32,13 @@ const Style = () => {
         color: #10B981;                      /* 翡翠绿 */
         text-decoration: none;               /* 去除默认下划线 */
         position: relative;                  /* 为伪元素定位 */
-        display: inline-block;               /* 行内块元素 */
-        padding: 2px 4px;                    /* 基础内边距 */
-        border-radius: 6px;                  /* 圆角 */
-        transition: all 0.3s ease;          /* 平滑过渡动画 */
+        display: inline;                     /* 行内元素，保持文字流 */
+        padding: 1px 3px;                    /* 减少内边距避免对齐问题 */
+        border-radius: 4px;                  /* 稍小的圆角 */
+        transition: all 0.25s ease-out;     /* 更丝滑的缓动函数，无回弹 */
         background: transparent;             /* 透明背景 */
-        overflow: hidden;                    /* 隐藏溢出 */
+        vertical-align: baseline;            /* 确保垂直对齐 */
+        line-height: inherit;                /* 继承行高 */
       }
 
       /* 2. 下划线动画效果 - 从左到右展开 */
@@ -120,7 +53,7 @@ const Style = () => {
         width: 0;                           /* 初始宽度为0 */
         height: 2px;                        /* 下划线高度 */
         background: linear-gradient(90deg, #10B981, #059669); /* 渐变下划线 */
-        transition: width 0.4s ease;       /* 宽度动画 */
+        transition: width 0.3s ease-out;    /* 丝滑展开，无回弹 */
         border-radius: 1px;                 /* 圆角下划线 */
       }
 
@@ -138,7 +71,7 @@ const Style = () => {
         background: rgba(16, 185, 129, 0.08); /* 淡绿背景 */
         border-radius: 6px;                 /* 圆角 */
         transform: translateX(-50%);        /* 居中对齐 */
-        transition: width 0.3s ease;       /* 宽度动画 */
+        transition: width 0.25s ease-out;   /* 丝滑展开，无回弹 */
         z-index: -1;                        /* 置于文字下方 */
       }
 
@@ -499,3 +432,4 @@ const Style = () => {
 }
 
 export { Style }
+s
