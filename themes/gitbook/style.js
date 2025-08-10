@@ -91,6 +91,27 @@ const Style = () => {
         background: linear-gradient(90deg, #4ADE80, #22C55E); /* 暗色模式渐变 */
       }
 
+      /* ===== 引用块模块 - 简洁绿色边框 ===== */
+      
+      /* 1. 引用块基础样式 - 更自然融入 */
+      blockquote {
+        background: #f9fafb;                    /* 简洁的浅灰背景 */
+        border-left: 3px solid #22C55E;        /* 稍细的绿色边框 */
+        padding: 16px 20px;                    /* 适中的内边距 */
+        margin: 20px 0;                        /* 标准间距 */
+        border-radius: 0 6px 6px 0;            /* 小圆角 */
+        font-style: italic;                    /* 斜体文字 */
+        color: #4b5563;                        /* 中性灰色文字 */
+        position: relative;                    /* 为伪元素定位 */
+      }
+
+      /* 2. 暗色模式下的引用块样式 */
+      .dark blockquote {
+        background: #1f2937;                   /* 暗色背景 */
+        border-left-color: #4ADE80;           /* 浅绿色边框 */
+        color: #d1d5db;                       /* 浅色文字 */
+      }
+
     `}</style>
   )
 }
