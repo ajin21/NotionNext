@@ -58,11 +58,15 @@ const Style = () => {
         color: #22C55E;              /* 暗色模式悬停时的绿色 */
       }
 
-      /* 4. 超链接底部流动线条效果 - 所有链接都有流动效果 */
-      .notion-page a::after,
-      .notion-text a::after,
-      article a::after,
-      .post-content a::after {
+      /* 4. 超链接底部流动线条效果 - 只对内部链接生效 */
+      .notion-page a:not([href^="http"])::after,
+      .notion-text a:not([href^="http"])::after,
+      article a:not([href^="http"])::after,
+      .post-content a:not([href^="http"])::after,
+      .notion-page a[href*="localhost"]::after,
+      .notion-text a[href*="localhost"]::after,
+      article a[href*="localhost"]::after,
+      .post-content a[href*="localhost"]::after {
         content: '';                 /* 创建伪元素 */
         position: absolute;          /* 绝对定位 */
         width: 0;                    /* 初始宽度为0 */
@@ -75,20 +79,36 @@ const Style = () => {
         border-radius: 1px;          /* 圆角线条 */
       }
 
-      /* 5. 悬停时线条从中心向两边展开的流动效果 */
-      .notion-page a:hover::after,
-      .notion-text a:hover::after,
-      article a:hover::after,
-      .post-content a:hover::after {
+      /* 5. 悬停时线条从中心向两边展开的流动效果 - 只对内部链接 */
+      .notion-page a:not([href^="http"]):hover::after,
+      .notion-text a:not([href^="http"]):hover::after,
+      article a:not([href^="http"]):hover::after,
+      .post-content a:not([href^="http"]):hover::after,
+      .notion-page a[href*="localhost"]:hover::after,
+      .notion-text a[href*="localhost"]:hover::after,
+      article a[href*="localhost"]:hover::after,
+      .post-content a[href*="localhost"]:hover::after {
         width: 100%;                 /* 悬停时线条展开到100%宽度 */
       }
 
-      /* 6. 暗色模式下的流动线条颜色 */
-      .dark .notion-page a::after,
-      .dark .notion-text a::after,
-      .dark article a::after,
-      .dark .post-content a::after {
+      /* 6. 暗色模式下的流动线条颜色 - 只对内部链接 */
+      .dark .notion-page a:not([href^="http"])::after,
+      .dark .notion-text a:not([href^="http"])::after,
+      .dark article a:not([href^="http"])::after,
+      .dark .post-content a:not([href^="http"])::after,
+      .dark .notion-page a[href*="localhost"]::after,
+      .dark .notion-text a[href*="localhost"]::after,
+      .dark article a[href*="localhost"]::after,
+      .dark .post-content a[href*="localhost"]::after {
         background: linear-gradient(90deg, #4ADE80, #22C55E); /* 暗色模式渐变 */
+      }
+
+      /* 7. 明确禁用外部链接的下划线效果 */
+      .notion-page a[href^="http"]:not([href*="localhost"])::after,
+      .notion-text a[href^="http"]:not([href*="localhost"])::after,
+      article a[href^="http"]:not([href*="localhost"])::after,
+      .post-content a[href^="http"]:not([href*="localhost"])::after {
+        display: none !important;             /* 强制隐藏外部链接的伪元素 */
       }
 
       /* ===== 引用块模块 - 简洁绿色边框 ===== */
