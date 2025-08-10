@@ -82,8 +82,44 @@ const Style = () => {
       /* 2. 暗色模式下的引用块样式 */
       .dark blockquote {
         background: #1f2937;                   /* 暗色背景 */
-        border-left-color: #4ADE80;           /* 浅绿色边框 */
+        border-left-color: #34D399;           /* 更新为翡翠绿边框 */
         color: #d1d5db;                       /* 浅色文字 */
+      }
+
+      /* ===== 一级标题模块 - 翡翠绿美化 ===== */
+      
+      /* 1. 一级标题基础样式 */
+      h1 {
+        font-size: 2.25rem;                   /* 大字号 */
+        font-weight: 800;                     /* 粗体 */
+        color: #1f2937;                       /* 深灰色文字 */
+        margin: 32px 0 24px 0;                /* 上下间距 */
+        padding-bottom: 16px;                 /* 底部内边距 */
+        border-bottom: 2px solid #e5e7eb;     /* 底部边框线 */
+        position: relative;                   /* 为伪元素定位 */
+        line-height: 1.2;                    /* 行高 */
+      }
+
+      /* 2. 一级标题装饰条 */
+      h1::after {
+        content: '';                          /* 创建伪元素 */
+        position: absolute;                   /* 绝对定位 */
+        bottom: -2px;                         /* 位于底部边框上 */
+        left: 0;                             /* 从左侧开始 */
+        width: 80px;                         /* 装饰条宽度 */
+        height: 4px;                         /* 装饰条高度 */
+        background: linear-gradient(90deg, #10B981, #059669); /* 翡翠绿渐变 */
+        border-radius: 2px;                  /* 圆角 */
+      }
+
+      /* 3. 暗色模式下的一级标题 */
+      .dark h1 {
+        color: #f9fafb;                      /* 浅色文字 */
+        border-bottom-color: #374151;        /* 暗色边框 */
+      }
+
+      .dark h1::after {
+        background: linear-gradient(90deg, #34D399, #10B981); /* 暗色模式渐变 */
       }
 
     `}</style>
