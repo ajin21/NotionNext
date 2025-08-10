@@ -161,10 +161,7 @@ const Style = () => {
 
       /* ===== 更多样式美化 ===== */
 
-      /* 页面整体美化 */
-      #theme-gitbook {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-      }
+
 
       /* 滚动条美化 - 明显点 */
       ::-webkit-scrollbar {
@@ -230,61 +227,21 @@ const Style = () => {
         color: #4ADE80;
       }
 
-      /* 引用块美化 - 绿色主题美化 */
+      /* 引用块美化 - 简洁设计，只保留左侧绿色 */
       blockquote {
-        background: linear-gradient(135deg, rgba(34, 197, 94, 0.08) 0%, rgba(34, 197, 94, 0.03) 100%);
-        border-left: 5px solid #22C55E;
-        padding: 20px 24px;
-        margin: 24px 0;
-        border-radius: 0 12px 12px 0;
+        background: #f9fafb;
+        border-left: 4px solid #22C55E;
+        padding: 16px 20px;
+        margin: 20px 0;
+        border-radius: 0 6px 6px 0;
         font-style: italic;
-        color: #1f2937;
-        position: relative;
-        box-shadow: 0 2px 8px rgba(34, 197, 94, 0.1);
-        border-top: 1px solid rgba(34, 197, 94, 0.2);
-        border-bottom: 1px solid rgba(34, 197, 94, 0.2);
-        border-right: 1px solid rgba(34, 197, 94, 0.1);
-      }
-
-      blockquote::before {
-        content: '';
-        position: absolute;
-        left: -5px;
-        top: 0;
-        bottom: 0;
-        width: 5px;
-        background: linear-gradient(to bottom, #22C55E 0%, #16A34A 50%, #15803D 100%);
-        border-radius: 0 2px 2px 0;
-      }
-
-      blockquote::after {
-        content: '"';
-        position: absolute;
-        top: 8px;
-        right: 16px;
-        font-size: 2.5em;
-        color: rgba(34, 197, 94, 0.15);
-        font-family: serif;
-        line-height: 1;
-        pointer-events: none;
+        color: #374151;
       }
 
       .dark blockquote {
-        background: linear-gradient(135deg, rgba(74, 222, 128, 0.12) 0%, rgba(74, 222, 128, 0.05) 100%);
+        background: #1f2937;
         border-left-color: #4ADE80;
-        color: #f3f4f6;
-        box-shadow: 0 2px 8px rgba(74, 222, 128, 0.15);
-        border-top-color: rgba(74, 222, 128, 0.3);
-        border-bottom-color: rgba(74, 222, 128, 0.3);
-        border-right-color: rgba(74, 222, 128, 0.2);
-      }
-
-      .dark blockquote::before {
-        background: linear-gradient(to bottom, #4ADE80 0%, #22C55E 50%, #16A34A 100%);
-      }
-
-      .dark blockquote::after {
-        color: rgba(74, 222, 128, 0.2);
+        color: #d1d5db;
       }
 
       /* 表格美化 - 简洁设计 */
