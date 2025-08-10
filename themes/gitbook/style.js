@@ -62,11 +62,19 @@ const Style = () => {
         opacity: 0.7;
       }
 
-      /* 超链接底部滑动线条效果 */
-      .notion-page a::after,
-      .notion-text a::after,
-      article a::after,
-      .post-content a::after {
+      /* 超链接底部滑动线条效果 - 只对内部链接生效 */
+      .notion-page a:not([href^="http"])::after,
+      .notion-text a:not([href^="http"])::after,
+      article a:not([href^="http"])::after,
+      .post-content a:not([href^="http"])::after,
+      .notion-page a[href*="localhost"]::after,
+      .notion-text a[href*="localhost"]::after,
+      article a[href*="localhost"]::after,
+      .post-content a[href*="localhost"]::after,
+      .notion-page a[href*="127.0.0.1"]::after,
+      .notion-text a[href*="127.0.0.1"]::after,
+      article a[href*="127.0.0.1"]::after,
+      .post-content a[href*="127.0.0.1"]::after {
         content: '';
         position: absolute;
         width: 0;
@@ -77,17 +85,33 @@ const Style = () => {
         transition: width 0.3s ease;
       }
 
-      .notion-page a:hover::after,
-      .notion-text a:hover::after,
-      article a:hover::after,
-      .post-content a:hover::after {
+      .notion-page a:not([href^="http"]):hover::after,
+      .notion-text a:not([href^="http"]):hover::after,
+      article a:not([href^="http"]):hover::after,
+      .post-content a:not([href^="http"]):hover::after,
+      .notion-page a[href*="localhost"]:hover::after,
+      .notion-text a[href*="localhost"]:hover::after,
+      article a[href*="localhost"]:hover::after,
+      .post-content a[href*="localhost"]:hover::after,
+      .notion-page a[href*="127.0.0.1"]:hover::after,
+      .notion-text a[href*="127.0.0.1"]:hover::after,
+      article a[href*="127.0.0.1"]:hover::after,
+      .post-content a[href*="127.0.0.1"]:hover::after {
         width: 100%;
       }
 
-      .dark .notion-page a::after,
-      .dark .notion-text a::after,
-      .dark article a::after,
-      .dark .post-content a::after {
+      .dark .notion-page a:not([href^="http"])::after,
+      .dark .notion-text a:not([href^="http"])::after,
+      .dark article a:not([href^="http"])::after,
+      .dark .post-content a:not([href^="http"])::after,
+      .dark .notion-page a[href*="localhost"]::after,
+      .dark .notion-text a[href*="localhost"]::after,
+      .dark article a[href*="localhost"]::after,
+      .dark .post-content a[href*="localhost"]::after,
+      .dark .notion-page a[href*="127.0.0.1"]::after,
+      .dark .notion-text a[href*="127.0.0.1"]::after,
+      .dark article a[href*="127.0.0.1"]::after,
+      .dark .post-content a[href*="127.0.0.1"]::after {
         background: #4ADE80;
       }
 
@@ -206,21 +230,61 @@ const Style = () => {
         color: #4ADE80;
       }
 
-      /* 引用块美化 - 简洁设计 */
+      /* 引用块美化 - 绿色主题美化 */
       blockquote {
-        background: rgba(34, 197, 94, 0.05);
-        border-left: 4px solid #22C55E;
-        padding: 16px 20px;
-        margin: 20px 0;
-        border-radius: 0 6px 6px 0;
+        background: linear-gradient(135deg, rgba(34, 197, 94, 0.08) 0%, rgba(34, 197, 94, 0.03) 100%);
+        border-left: 5px solid #22C55E;
+        padding: 20px 24px;
+        margin: 24px 0;
+        border-radius: 0 12px 12px 0;
         font-style: italic;
-        color: #374151;
+        color: #1f2937;
+        position: relative;
+        box-shadow: 0 2px 8px rgba(34, 197, 94, 0.1);
+        border-top: 1px solid rgba(34, 197, 94, 0.2);
+        border-bottom: 1px solid rgba(34, 197, 94, 0.2);
+        border-right: 1px solid rgba(34, 197, 94, 0.1);
+      }
+
+      blockquote::before {
+        content: '';
+        position: absolute;
+        left: -5px;
+        top: 0;
+        bottom: 0;
+        width: 5px;
+        background: linear-gradient(to bottom, #22C55E 0%, #16A34A 50%, #15803D 100%);
+        border-radius: 0 2px 2px 0;
+      }
+
+      blockquote::after {
+        content: '"';
+        position: absolute;
+        top: 8px;
+        right: 16px;
+        font-size: 2.5em;
+        color: rgba(34, 197, 94, 0.15);
+        font-family: serif;
+        line-height: 1;
+        pointer-events: none;
       }
 
       .dark blockquote {
-        background: rgba(74, 222, 128, 0.1);
+        background: linear-gradient(135deg, rgba(74, 222, 128, 0.12) 0%, rgba(74, 222, 128, 0.05) 100%);
         border-left-color: #4ADE80;
-        color: #d1d5db;
+        color: #f3f4f6;
+        box-shadow: 0 2px 8px rgba(74, 222, 128, 0.15);
+        border-top-color: rgba(74, 222, 128, 0.3);
+        border-bottom-color: rgba(74, 222, 128, 0.3);
+        border-right-color: rgba(74, 222, 128, 0.2);
+      }
+
+      .dark blockquote::before {
+        background: linear-gradient(to bottom, #4ADE80 0%, #22C55E 50%, #16A34A 100%);
+      }
+
+      .dark blockquote::after {
+        color: rgba(74, 222, 128, 0.2);
       }
 
       /* 表格美化 - 简洁设计 */
@@ -418,7 +482,7 @@ const Style = () => {
         margin: 24px 0 16px 0;
       }
 
-      /* 四级标题及以下 - 简单样式 */
+      /* 四级标题及以下 - 简洁样式 */
       h4, h5, h6 {
         font-size: 1.25rem;
         font-weight: 600;
@@ -427,17 +491,6 @@ const Style = () => {
 
       .dark h4, .dark h5, .dark h6 {
         color: #d1d5db;
-      }
-
-      h4::before {
-        content: '▸';
-        color: #22C55E;
-        margin-right: 8px;
-        font-weight: bold;
-      }
-
-      .dark h4::before {
-        color: #4ADE80;
       }
 
       /* 导航菜单美化 - 简洁设计 */
@@ -455,47 +508,7 @@ const Style = () => {
         background: rgba(74, 222, 128, 0.15);
       }
 
-      /* 搜索框样式重置 - 解决位置问题 */
-      .search-input,
-      input[type="search"],
-      .search-container input,
-      .algolia-search input {
-        all: unset;
-        display: flex;
-        align-items: center;
-        width: 100%;
-        padding: 12px 16px;
-        background: white;
-        border: 1px solid #e5e7eb;
-        border-radius: 8px;
-        color: #374151;
-        font-size: 14px;
-        transition: border-color 0.2s ease;
-      }
 
-      .search-input:focus,
-      input[type="search"]:focus,
-      .search-container input:focus,
-      .algolia-search input:focus {
-        outline: none;
-        border-color: #22C55E;
-      }
-
-      .dark .search-input,
-      .dark input[type="search"],
-      .dark .search-container input,
-      .dark .algolia-search input {
-        background: #374151;
-        border-color: #4b5563;
-        color: white;
-      }
-
-      .dark .search-input:focus,
-      .dark input[type="search"]:focus,
-      .dark .search-container input:focus,
-      .dark .algolia-search input:focus {
-        border-color: #4ADE80;
-      }
 
 
 
@@ -712,23 +725,25 @@ const Style = () => {
 
       /* ===== 外部链接特殊处理 ===== */
       
-      /* 外部链接新窗口打开提示 */
-      .notion-page a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"]):after,
-      .notion-text a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"]):after,
-      article a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"]):after,
-      .post-content a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"]):after {
-        content: "↗";
+      /* 外部链接新窗口打开提示 - 修复定位问题 */
+      .notion-page a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"])::after,
+      .notion-text a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"])::after,
+      article a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"])::after,
+      .post-content a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"])::after {
+        content: " ↗";
         font-size: 0.8em;
-        margin-left: 4px;
         opacity: 0.7;
         color: #22C55E;
         font-weight: bold;
+        position: relative;
+        display: inline;
+        vertical-align: baseline;
       }
 
-      .dark .notion-page a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"]):after,
-      .dark .notion-text a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"]):after,
-      .dark article a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"]):after,
-      .dark .post-content a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"]):after {
+      .dark .notion-page a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"])::after,
+      .dark .notion-text a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"])::after,
+      .dark article a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"])::after,
+      .dark .post-content a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"])::after {
         color: #4ADE80;
       }
 
