@@ -58,7 +58,7 @@ const Style = () => {
         color: #22C55E;              /* 暗色模式悬停时的绿色 */
       }
 
-      /* 4. 超链接底部流动线条效果 */
+      /* 4. 超链接底部流动线条效果 - 所有链接都有流动效果 */
       .notion-page a::after,
       .notion-text a::after,
       article a::after,
@@ -67,13 +67,15 @@ const Style = () => {
         position: absolute;          /* 绝对定位 */
         width: 0;                    /* 初始宽度为0 */
         height: 2px;                 /* 线条高度 */
-        bottom: -2px;                /* 位于文字底部 */
-        left: 0;                     /* 从左侧开始 */
-        background: #22C55E;         /* 绿色线条 */
-        transition: width 0.3s ease; /* 宽度变化的流动动画 */
+        bottom: -3px;                /* 稍微远离文字，避免重叠 */
+        left: 50%;                   /* 从中心开始 */
+        background: linear-gradient(90deg, #22C55E, #16A34A); /* 渐变绿色线条 */
+        transform: translateX(-50%); /* 居中对齐 */
+        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* 更流畅的贝塞尔曲线动画 */
+        border-radius: 1px;          /* 圆角线条 */
       }
 
-      /* 5. 悬停时线条从左到右展开的流动效果 */
+      /* 5. 悬停时线条从中心向两边展开的流动效果 */
       .notion-page a:hover::after,
       .notion-text a:hover::after,
       article a:hover::after,
@@ -86,7 +88,7 @@ const Style = () => {
       .dark .notion-text a::after,
       .dark article a::after,
       .dark .post-content a::after {
-        background: #4ADE80;         /* 暗色模式下使用浅绿色线条 */
+        background: linear-gradient(90deg, #4ADE80, #22C55E); /* 暗色模式渐变 */
       }
 
     `}</style>
