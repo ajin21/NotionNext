@@ -32,12 +32,13 @@ const Style = () => {
         color: #10B981;                      /* 翡翠绿 */
         text-decoration: none;               /* 去除默认下划线 */
         position: relative;                  /* 为伪元素定位 */
-        display: inline-block;               /* 行内块元素 */
-        padding: 2px 4px;                    /* 基础内边距 */
-        border-radius: 6px;                  /* 圆角 */
+        display: inline;                     /* 行内元素，保持文字流 */
+        padding: 1px 3px;                    /* 减少内边距避免对齐问题 */
+        border-radius: 4px;                  /* 稍小的圆角 */
         transition: all 0.25s ease-out;     /* 更丝滑的缓动函数，无回弹 */
         background: transparent;             /* 透明背景 */
-        overflow: hidden;                    /* 隐藏溢出 */
+        vertical-align: baseline;            /* 确保垂直对齐 */
+        line-height: inherit;                /* 继承行高 */
       }
 
       /* 2. 下划线动画效果 - 从左到右展开 */
