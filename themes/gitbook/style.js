@@ -312,6 +312,98 @@ const Style = () => {
         font-weight: 500;                   /* 暗色模式激活状态稍微加粗 */
       }
 
+      /* ===== 代码块模块 - 绿色主题 ===== */
+      
+      /* 1. 行内代码样式 */
+      code {
+        background: rgba(16, 185, 129, 0.1);   /* 淡绿色背景 */
+        color: #059669;                        /* 主绿色文字 */
+        padding: 2px 6px;                      /* 内边距 */
+        border-radius: 4px;                    /* 圆角 */
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; /* 等宽字体 */
+        font-size: 0.875em;                   /* 稍小的字号 */
+        font-weight: 500;                     /* 中等粗细 */
+        border: 1px solid rgba(16, 185, 129, 0.2); /* 淡绿色边框 */
+      }
+
+      /* 2. 代码块容器样式 */
+      pre {
+        background: rgba(16, 185, 129, 0.08);  /* 更淡的绿色背景 */
+        border: 1px solid rgba(16, 185, 129, 0.15); /* 淡绿色边框 */
+        border-radius: 8px;                    /* 圆角 */
+        padding: 16px 20px;                    /* 内边距 */
+        margin: 16px 0;                        /* 外边距 */
+        overflow-x: auto;                      /* 水平滚动 */
+        position: relative;                    /* 为伪元素定位 */
+      }
+
+      /* 3. 代码块内的代码样式 */
+      pre code {
+        background: transparent;               /* 透明背景 */
+        color: #047857;                        /* 深绿色文字 */
+        padding: 0;                           /* 去除内边距 */
+        border: none;                         /* 去除边框 */
+        border-radius: 0;                     /* 去除圆角 */
+        font-size: 0.875rem;                  /* 代码块字号 */
+        line-height: 1.6;                    /* 行高 */
+      }
+
+      /* 4. 暗色模式下的代码样式 */
+      .dark code {
+        background: rgba(52, 211, 153, 0.15); /* 暗色模式淡绿背景 */
+        color: #34D399;                       /* 暗色模式亮绿文字 */
+        border-color: rgba(52, 211, 153, 0.25); /* 暗色模式边框 */
+      }
+
+      .dark pre {
+        background: rgba(52, 211, 153, 0.1);  /* 暗色模式代码块背景 */
+        border-color: rgba(52, 211, 153, 0.2); /* 暗色模式边框 */
+      }
+
+      .dark pre code {
+        color: #6EE7B7;                       /* 暗色模式更亮的绿色 */
+      }
+
+      /* 5. 特殊代码块类型 */
+      .notion-code,
+      .code-block {
+        background: rgba(16, 185, 129, 0.08);  /* 统一绿色背景 */
+        border: 1px solid rgba(16, 185, 129, 0.15);
+        border-radius: 8px;
+        padding: 16px 20px;
+        margin: 16px 0;
+      }
+
+      .dark .notion-code,
+      .dark .code-block {
+        background: rgba(52, 211, 153, 0.1);
+        border-color: rgba(52, 211, 153, 0.2);
+      }
+
+      /* ===== 二三级标题样式重置 ===== */
+      
+      /* 重置二三级标题为默认样式 */
+      h2, h3 {
+        font-size: inherit;                   /* 继承字号 */
+        font-weight: inherit;                 /* 继承粗细 */
+        color: inherit;                       /* 继承颜色 */
+        margin: inherit;                      /* 继承边距 */
+        padding: inherit;                     /* 继承内边距 */
+        position: static;                     /* 静态定位 */
+        line-height: inherit;                 /* 继承行高 */
+        letter-spacing: inherit;              /* 继承字母间距 */
+        background: none;                     /* 无背景 */
+        background-clip: initial;             /* 重置背景裁剪 */
+        -webkit-background-clip: initial;     /* 重置Safari背景裁剪 */
+        -webkit-text-fill-color: initial;    /* 重置文字填充色 */
+      }
+
+      /* 移除二三级标题的伪元素 */
+      h2::before, h2::after,
+      h3::before, h3::after {
+        display: none;                        /* 隐藏所有伪元素 */
+      }
+
       /* ===== 统计板块样式优化 ===== */
       
       /* 1. 统计容器基础样式 */
