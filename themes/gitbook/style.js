@@ -305,6 +305,83 @@ const Style = () => {
 
 
 
+      /* ===== 二三级标题强力重置 - 恢复完全默认样式 ===== */
+      
+      /* 1. 强力重置二三级标题所有样式 */
+      h2, h3, h4, h5, h6 {
+        all: revert !important;             /* 恢复浏览器默认样式 */
+        position: static !important;        /* 静态定位 */
+      }
+
+      /* 2. 移除二三级标题的所有伪元素 */
+      h2::before, h2::after,
+      h3::before, h3::after,
+      h4::before, h4::after,
+      h5::before, h5::after,
+      h6::before, h6::after {
+        content: none !important;           /* 移除伪元素内容 */
+        display: none !important;           /* 隐藏伪元素 */
+      }
+
+      /* 3. 暗色模式下也强力重置 */
+      .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+        all: revert !important;             /* 恢复浏览器默认样式 */
+        position: static !important;        /* 静态定位 */
+      }
+
+      /* 4. 移除标题前的链接图标 - 全面覆盖 */
+      h2 .notion-header-anchor,
+      h3 .notion-header-anchor,
+      h4 .notion-header-anchor,
+      h5 .notion-header-anchor,
+      h6 .notion-header-anchor,
+      h2::before,
+      h3::before,
+      h4::before,
+      h5::before,
+      h6::before,
+      h2 > a::before,
+      h3 > a::before,
+      h4 > a::before,
+      h5 > a::before,
+      h6 > a::before,
+      .notion-h2::before,
+      .notion-h3::before,
+      .notion-h4::before,
+      .notion-h5::before,
+      .notion-h6::before,
+      .notion-header::before {
+        display: none !important;           /* 隐藏链接图标 */
+        content: none !important;           /* 移除内容 */
+        visibility: hidden !important;      /* 隐藏可见性 */
+        opacity: 0 !important;              /* 透明度为0 */
+        width: 0 !important;                /* 宽度为0 */
+        height: 0 !important;               /* 高度为0 */
+        margin: 0 !important;               /* 无外边距 */
+        padding: 0 !important;              /* 无内边距 */
+      }
+
+      /* 5. 移除所有可能的标题装饰元素 */
+      h2 svg,
+      h3 svg,
+      h4 svg,
+      h5 svg,
+      h6 svg,
+      h2 .icon,
+      h3 .icon,
+      h4 .icon,
+      h5 .icon,
+      h6 .icon,
+      h2 .anchor,
+      h3 .anchor,
+      h4 .anchor,
+      h5 .anchor,
+      h6 .anchor {
+        display: none !important;           /* 隐藏所有图标和锚点 */
+        visibility: hidden !important;      /* 隐藏可见性 */
+        opacity: 0 !important;              /* 透明度为0 */
+      }
+
       /* ===== 标题内超链接透明化 - 仅处理超链接，不影响标题默认样式 ===== */
       
       /* 1. 所有标题内的超链接 - 完全透明化 */
