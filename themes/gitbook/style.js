@@ -24,11 +24,11 @@ const Style = () => {
 
       /* ===== 超链接模块 - 平滑悬停动画 ===== */
       
-      /* 1. 文章内容区域的超链接基础样式 - 排除标题元素 */
-      .notion-page a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a),
-      .notion-text a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a),
-      article a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a),
-      .post-content a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a) {
+      /* 1. 文章内容区域的超链接基础样式 */
+      .notion-page a,
+      .notion-text a,
+      article a,
+      .post-content a {
         color: #10B981;                      /* 翡翠绿 */
         text-decoration: none;               /* 去除默认下划线 */
         position: relative;                  /* 为伪元素定位 */
@@ -41,22 +41,11 @@ const Style = () => {
         line-height: inherit;                /* 继承行高 */
       }
 
-      /* 标题内的链接保持默认样式 */
-      h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-        all: revert !important;              /* 完全重置为默认样式 */
-        color: inherit !important;           /* 继承标题颜色 */
-        text-decoration: none !important;    /* 去除下划线 */
-        padding: 0 !important;               /* 无内边距 */
-        background: none !important;         /* 无背景 */
-        border-radius: 0 !important;         /* 无圆角 */
-        position: static !important;         /* 静态定位 */
-      }
-
-      /* 2. 下划线动画效果 - 从左到右展开 - 排除标题内链接 */
-      .notion-page a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::before,
-      .notion-text a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::before,
-      article a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::before,
-      .post-content a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::before {
+      /* 2. 下划线动画效果 - 从左到右展开 */
+      .notion-page a::before,
+      .notion-text a::before,
+      article a::before,
+      .post-content a::before {
         content: '';                         /* 创建伪元素 */
         position: absolute;                  /* 绝对定位 */
         bottom: 0;                          /* 底部对齐 */
@@ -68,11 +57,11 @@ const Style = () => {
         border-radius: 1px;                 /* 圆角下划线 */
       }
 
-      /* 3. 圆角矩形背景动画效果 - 平滑展开 - 排除标题内链接 */
-      .notion-page a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::after,
-      .notion-text a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::after,
-      article a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::after,
-      .post-content a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::after {
+      /* 3. 圆角矩形背景动画效果 - 平滑展开 */
+      .notion-page a::after,
+      .notion-text a::after,
+      article a::after,
+      .post-content a::after {
         content: '';                         /* 创建伪元素 */
         position: absolute;                  /* 绝对定位 */
         top: 0;                             /* 顶部对齐 */
@@ -86,57 +75,57 @@ const Style = () => {
         z-index: -1;                        /* 置于文字下方 */
       }
 
-      /* 4. 悬停时的效果 - 排除标题内链接 */
-      .notion-page a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover,
-      .notion-text a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover,
-      article a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover,
-      .post-content a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover {
+      /* 4. 悬停时的效果 */
+      .notion-page a:hover,
+      .notion-text a:hover,
+      article a:hover,
+      .post-content a:hover {
         color: #059669;                     /* 深翡翠绿 */
         box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15); /* 柔和阴影 */
       }
 
-      /* 5. 悬停时下划线展开 - 排除标题内链接 */
-      .notion-page a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover::before,
-      .notion-text a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover::before,
-      article a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover::before,
-      .post-content a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover::before {
+      /* 5. 悬停时下划线展开 */
+      .notion-page a:hover::before,
+      .notion-text a:hover::before,
+      article a:hover::before,
+      .post-content a:hover::before {
         width: 100%;                        /* 下划线展开到全宽 */
       }
 
-      /* 6. 悬停时背景展开 - 排除标题内链接 */
-      .notion-page a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover::after,
-      .notion-text a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover::after,
-      article a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover::after,
-      .post-content a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover::after {
+      /* 6. 悬停时背景展开 */
+      .notion-page a:hover::after,
+      .notion-text a:hover::after,
+      article a:hover::after,
+      .post-content a:hover::after {
         width: calc(100% + 8px);            /* 背景展开，稍微超出文字 */
       }
 
-      /* 7. 暗色模式下的超链接样式 - 排除标题内链接 */
-      .dark .notion-page a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a),
-      .dark .notion-text a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a),
-      .dark article a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a),
-      .dark .post-content a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a) {
+      /* 7. 暗色模式下的超链接样式 */
+      .dark .notion-page a,
+      .dark .notion-text a,
+      .dark article a,
+      .dark .post-content a {
         color: #34D399;                     /* 亮翡翠绿 */
       }
 
-      .dark .notion-page a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::before,
-      .dark .notion-text a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::before,
-      .dark article a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::before,
-      .dark .post-content a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::before {
+      .dark .notion-page a::before,
+      .dark .notion-text a::before,
+      .dark article a::before,
+      .dark .post-content a::before {
         background: linear-gradient(90deg, #34D399, #10B981); /* 暗色模式渐变 */
       }
 
-      .dark .notion-page a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::after,
-      .dark .notion-text a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::after,
-      .dark article a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::after,
-      .dark .post-content a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::after {
+      .dark .notion-page a::after,
+      .dark .notion-text a::after,
+      .dark article a::after,
+      .dark .post-content a::after {
         background: rgba(52, 211, 153, 0.12); /* 暗色模式背景 */
       }
 
-      .dark .notion-page a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover,
-      .dark .notion-text a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover,
-      .dark article a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover,
-      .dark .post-content a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover {
+      .dark .notion-page a:hover,
+      .dark .notion-text a:hover,
+      .dark article a:hover,
+      .dark .post-content a:hover {
         color: #6EE7B7;                     /* 更亮的绿色 */
         box-shadow: 0 4px 12px rgba(52, 211, 153, 0.2); /* 暗色模式阴影 */
       }
@@ -161,100 +150,218 @@ const Style = () => {
         box-shadow: 0 6px 20px rgba(16, 185, 129, 0.25); /* 更强的阴影 */
       }
 
-      /* ===== 引用块模块 - 强制绿色显示 ===== */
+      /* ===== 代码引用模块 - 绿色字体淡绿色背景 ===== */
       
-      /* 1. 引用块基础样式 - 强制绿色背景和边框 */
-      blockquote,
-      .notion-quote,
-      .quote-block {
-        background-color: #dcfce7 !important;            /* 强制绿色背景 */
-        background: #dcfce7 !important;                   /* 强制绿色背景 */
-        border: none !important;                          /* 移除所有边框 */
-        border-left: 4px solid #16a34a !important;       /* 强制绿色左边框 */
-        padding: 16px 20px !important;                    /* 内边距 */
-        margin: 20px 0 !important;                        /* 外边距 */
-        border-radius: 0 8px 8px 0 !important;           /* 圆角 */
-        font-style: normal !important;                    /* 正常字体样式 */
-        color: #166534 !important;                        /* 深绿色文字 */
-        position: relative !important;                    /* 相对定位 */
+      /* 1. 行内代码样式 */
+      code {
+        color: #059669;                        /* 绿色字体 */
+        background: rgba(16, 185, 129, 0.1);  /* 淡绿色背景 */
+        padding: 2px 6px;                     /* 内边距 */
+        border-radius: 4px;                   /* 圆角 */
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; /* 等宽字体 */
+        font-size: 0.875em;                   /* 稍小的字号 */
+        font-weight: 500;                     /* 中等粗细 */
+        border: 1px solid rgba(16, 185, 129, 0.2); /* 淡绿色边框 */
+      }
+
+      /* 2. 代码块样式 */
+      pre code {
+        color: #059669;                        /* 绿色字体 */
+        background: rgba(16, 185, 129, 0.08); /* 更淡的绿色背景 */
+        display: block;                       /* 块级元素 */
+        padding: 16px;                        /* 内边距 */
+        border-radius: 8px;                   /* 圆角 */
+        border: 1px solid rgba(16, 185, 129, 0.15); /* 淡绿色边框 */
+        overflow-x: auto;                     /* 水平滚动 */
+      }
+
+      /* 3. 暗色模式下的代码样式 */
+      .dark code {
+        color: #34D399;                       /* 暗色模式亮绿色字体 */
+        background: rgba(52, 211, 153, 0.12); /* 暗色模式淡绿背景 */
+        border-color: rgba(52, 211, 153, 0.25); /* 暗色模式边框 */
+      }
+
+      .dark pre code {
+        color: #34D399;                       /* 暗色模式亮绿色字体 */
+        background: rgba(52, 211, 153, 0.1);  /* 暗色模式代码块背景 */
+        border-color: rgba(52, 211, 153, 0.2); /* 暗色模式代码块边框 */
+      }
+
+      /* ===== 引用块模块 - 简洁绿色边框 ===== */
+      
+      /* 1. 引用块基础样式 - 更自然融入 */
+      blockquote {
+        background: #f9fafb;                    /* 简洁的浅灰背景 */
+        border-left: 3px solid #22C55E;        /* 稍细的绿色边框 */
+        padding: 16px 20px;                    /* 适中的内边距 */
+        margin: 20px 0;                        /* 标准间距 */
+        border-radius: 0 6px 6px 0;            /* 小圆角 */
+        font-style: italic;                    /* 斜体文字 */
+        color: #4b5563;                        /* 中性灰色文字 */
+        position: relative;                    /* 为伪元素定位 */
       }
 
       /* 2. 暗色模式下的引用块样式 */
-      .dark blockquote,
-      .dark .notion-quote,
-      .dark .quote-block {
-        background-color: #14532d !important;            /* 暗色模式深绿背景 */
-        background: #14532d !important;                   /* 暗色模式深绿背景 */
-        border-left-color: #22c55e !important;           /* 暗色模式亮绿边框 */
-        color: #bbf7d0 !important;                       /* 暗色模式浅绿文字 */
+      .dark blockquote {
+        background: #1f2937;                   /* 暗色背景 */
+        border-left-color: #34D399;           /* 更新为翡翠绿边框 */
+        color: #d1d5db;                       /* 浅色文字 */
       }
 
-      /* ===== 一级标题模块 - 简洁侧边线条设计 ===== */
+      /* ===== 一级标题模块 - 静态美化效果 ===== */
       
-      /* 1. 一级标题基础样式 - 简洁的侧边线条效果 */
+      /* 1. 一级标题基础样式 - 无动画版本 */
       h1 {
-        font-size: 2rem;                    /* 适中的字号 */
-        font-weight: 700;                   /* 粗体 */
-        color: #1f2937 !important;          /* 深灰色文字 */
-        margin: 32px 0 24px 0;              /* 适中的上下间距 */
-        padding: 16px 0 16px 24px;          /* 左侧内边距为线条留空间 */
-        position: relative;                 /* 为伪元素定位 */
-        line-height: 1.4;                  /* 行高 */
-        letter-spacing: 0.01em;             /* 轻微字母间距 */
-        display: block;                     /* 块级元素 */
-        background: none;                   /* 无背景 */
-        border: none;                       /* 无边框 */
-        border-radius: 0;                   /* 无圆角 */
-        box-shadow: none;                   /* 无阴影 */
+        font-size: 2.5rem;                   /* 更大的字号 */
+        font-weight: 800;                    /* 粗体 */
+        color: #1f2937;                      /* 深灰色文字 */
+        margin: 40px 0 32px 0;               /* 更大的上下间距 */
+        padding: 20px 0 24px 0;              /* 内边距 */
+        position: relative;                  /* 为伪元素定位 */
+        line-height: 1.2;                   /* 行高 */
+        letter-spacing: -0.025em;            /* 字母间距 */
+        background: linear-gradient(135deg, #1f2937 0%, #374151 100%); /* 文字渐变 */
+        background-clip: text;               /* 渐变裁剪到文字 */
+        -webkit-background-clip: text;       /* Safari 兼容 */
+        -webkit-text-fill-color: transparent; /* 透明文字显示渐变 */
       }
 
-      /* 2. 侧边线条装饰 */
-      h1::before {
-        content: '';                        /* 创建伪元素 */
-        position: absolute;                 /* 绝对定位 */
-        left: 0;                           /* 左侧对齐 */
-        top: 0;                            /* 顶部对齐 */
-        bottom: 0;                         /* 底部对齐 */
-        width: 6px;                        /* 线条宽度 */
-        background: linear-gradient(180deg, 
+      /* 2. 标题装饰条 - 静态渐变线条 */
+      h1::after {
+        content: '';                         /* 创建伪元素 */
+        position: absolute;                  /* 绝对定位 */
+        bottom: 0;                          /* 底部对齐 */
+        left: 0;                            /* 从左侧开始 */
+        width: 120px;                       /* 固定宽度 */
+        height: 4px;                        /* 装饰条高度 */
+        background: linear-gradient(90deg, 
           #10B981 0%, 
           #059669 50%, 
           #047857 100%
-        );                                 /* 垂直渐变绿色线条 */
-        border-radius: 3px;                /* 圆角线条 */
+        );                                  /* 三色渐变 */
+        border-radius: 2px;                 /* 圆角 */
         box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3); /* 发光效果 */
       }
 
-      /* 3. 移除after伪元素 */
-      h1::after {
-        display: none;                     /* 隐藏after伪元素 */
-      }
-
-      /* 4. 暗色模式下的一级标题 */
+      /* 3. 暗色模式下的一级标题 */
       .dark h1 {
-        color: #f9fafb !important;         /* 暗色模式浅色文字 */
+        background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%); /* 暗色模式文字渐变 */
+        background-clip: text;              /* 渐变裁剪到文字 */
+        -webkit-background-clip: text;      /* Safari 兼容 */
+        -webkit-text-fill-color: transparent; /* 透明文字显示渐变 */
       }
 
-      .dark h1::before {
-        background: linear-gradient(180deg, 
+      .dark h1::after {
+        background: linear-gradient(90deg, 
           #34D399 0%, 
           #10B981 50%, 
           #059669 100%
-        );                                 /* 暗色模式线条渐变 */
+        );                                  /* 暗色模式装饰条渐变 */
         box-shadow: 0 2px 8px rgba(52, 211, 153, 0.4); /* 暗色模式发光 */
       }
 
-      /* 5. 响应式优化 */
+      /* 4. 响应式优化 */
       @media (max-width: 768px) {
         h1 {
-          font-size: 1.75rem;              /* 移动端较小字号 */
+          font-size: 2rem;                  /* 移动端较小字号 */
           margin: 24px 0 20px 0;           /* 移动端较小间距 */
-          padding: 12px 0 12px 20px;       /* 移动端内边距 */
+          padding: 16px 0 20px 0;          /* 移动端内边距 */
         }
         
-        h1::before {
-          width: 4px;                      /* 移动端较细线条 */
-          border-radius: 2px;              /* 移动端圆角 */
+        h1::after {
+          width: 80px;                     /* 移动端较短装饰条 */
+        }
+      }
+
+      /* ===== 二三级标题模块 - 简洁超链接样式 ===== */
+      
+      /* 1. 二级标题基础样式 */
+      h2 {
+        font-size: 1.875rem;                /* 标准字号 */
+        font-weight: 700;                   /* 粗体 */
+        color: #374151;                     /* 深灰色 */
+        margin: 32px 0 20px 0;              /* 标准间距 */
+        line-height: 1.3;                  /* 行高 */
+        position: relative;                 /* 为伪元素定位 */
+      }
+
+      /* 2. 三级标题基础样式 */
+      h3 {
+        font-size: 1.5rem;                  /* 标准字号 */
+        font-weight: 600;                   /* 中粗体 */
+        color: #4b5563;                     /* 中灰色 */
+        margin: 28px 0 16px 0;              /* 标准间距 */
+        line-height: 1.4;                  /* 行高 */
+        position: relative;                 /* 为伪元素定位 */
+      }
+
+      /* 3. 二三级标题内的超链接 - 完全透明化 */
+      h2 a,
+      h3 a {
+        color: inherit;                     /* 继承标题颜色 */
+        text-decoration: none;              /* 去除下划线 */
+        display: inline;                    /* 行内显示 */
+        padding: 0;                         /* 无内边距 */
+        margin: 0;                          /* 无外边距 */
+        background: transparent;            /* 透明背景 */
+        border: none;                       /* 无边框 */
+        outline: none;                      /* 无轮廓 */
+        box-shadow: none;                   /* 无阴影 */
+        transition: none;                   /* 无过渡效果 */
+        font-weight: inherit;               /* 继承字重 */
+        font-size: inherit;                 /* 继承字号 */
+        line-height: inherit;               /* 继承行高 */
+        letter-spacing: inherit;            /* 继承字间距 */
+      }
+
+      /* 4. 去除所有伪元素效果 */
+      h2 a::before,
+      h2 a::after,
+      h3 a::before,
+      h3 a::after {
+        display: none;                      /* 隐藏所有伪元素 */
+      }
+
+      /* 5. 悬停时保持原样 */
+      h2 a:hover,
+      h3 a:hover {
+        color: inherit;                     /* 悬停时保持原色 */
+        background: transparent;            /* 悬停时保持透明 */
+        text-decoration: none;              /* 悬停时无下划线 */
+        box-shadow: none;                   /* 悬停时无阴影 */
+        transform: none;                    /* 悬停时无变换 */
+      }
+
+      /* 6. 暗色模式下的二三级标题 */
+      .dark h2 {
+        color: #e5e7eb;                     /* 暗色模式浅色 */
+      }
+
+      .dark h3 {
+        color: #d1d5db;                     /* 暗色模式中浅色 */
+      }
+
+      .dark h2 a,
+      .dark h3 a {
+        color: inherit;                     /* 暗色模式继承颜色 */
+      }
+
+      .dark h2 a:hover,
+      .dark h3 a:hover {
+        color: inherit;                     /* 暗色模式悬停保持原色 */
+      }
+
+      /* 7. 响应式优化 */
+      @media (max-width: 768px) {
+        h2 {
+          font-size: 1.5rem;                /* 移动端较小字号 */
+          margin: 24px 0 16px 0;            /* 移动端较小间距 */
+        }
+        
+        h3 {
+          font-size: 1.25rem;               /* 移动端较小字号 */
+          margin: 20px 0 12px 0;            /* 移动端较小间距 */
         }
       }
 
@@ -332,110 +439,6 @@ const Style = () => {
         color: #6EE7B7;                     /* 更亮的绿色 */
         background-color: rgba(52, 211, 153, 0.15); /* 暗色模式激活背景 */
         font-weight: 500;                   /* 暗色模式激活状态稍微加粗 */
-      }
-
-      /* ===== 代码块模块 - 绿色主题 ===== */
-      
-      /* 1. 行内代码样式 */
-      code {
-        background: rgba(16, 185, 129, 0.1);   /* 淡绿色背景 */
-        color: #059669;                        /* 主绿色文字 */
-        padding: 2px 6px;                      /* 内边距 */
-        border-radius: 4px;                    /* 圆角 */
-        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; /* 等宽字体 */
-        font-size: 0.875em;                   /* 稍小的字号 */
-        font-weight: 500;                     /* 中等粗细 */
-        border: 1px solid rgba(16, 185, 129, 0.2); /* 淡绿色边框 */
-      }
-
-      /* 2. 代码块容器样式 */
-      pre {
-        background: rgba(16, 185, 129, 0.08);  /* 更淡的绿色背景 */
-        border: 1px solid rgba(16, 185, 129, 0.15); /* 淡绿色边框 */
-        border-radius: 8px;                    /* 圆角 */
-        padding: 16px 20px;                    /* 内边距 */
-        margin: 16px 0;                        /* 外边距 */
-        overflow-x: auto;                      /* 水平滚动 */
-        position: relative;                    /* 为伪元素定位 */
-      }
-
-      /* 3. 代码块内的代码样式 */
-      pre code {
-        background: transparent;               /* 透明背景 */
-        color: #047857;                        /* 深绿色文字 */
-        padding: 0;                           /* 去除内边距 */
-        border: none;                         /* 去除边框 */
-        border-radius: 0;                     /* 去除圆角 */
-        font-size: 0.875rem;                  /* 代码块字号 */
-        line-height: 1.6;                    /* 行高 */
-      }
-
-      /* 4. 暗色模式下的代码样式 */
-      .dark code {
-        background: rgba(52, 211, 153, 0.15); /* 暗色模式淡绿背景 */
-        color: #34D399;                       /* 暗色模式亮绿文字 */
-        border-color: rgba(52, 211, 153, 0.25); /* 暗色模式边框 */
-      }
-
-      .dark pre {
-        background: rgba(52, 211, 153, 0.1);  /* 暗色模式代码块背景 */
-        border-color: rgba(52, 211, 153, 0.2); /* 暗色模式边框 */
-      }
-
-      .dark pre code {
-        color: #6EE7B7;                       /* 暗色模式更亮的绿色 */
-      }
-
-      /* 5. 特殊代码块类型 */
-      .notion-code,
-      .code-block {
-        background: rgba(16, 185, 129, 0.08);  /* 统一绿色背景 */
-        border: 1px solid rgba(16, 185, 129, 0.15);
-        border-radius: 8px;
-        padding: 16px 20px;
-        margin: 16px 0;
-      }
-
-      .dark .notion-code,
-      .dark .code-block {
-        background: rgba(52, 211, 153, 0.1);
-        border-color: rgba(52, 211, 153, 0.2);
-      }
-
-      /* ===== 二三级标题样式完全重置 ===== */
-      
-      /* 完全重置二三级标题为浏览器默认样式 */
-      h2, h3, h4, h5, h6 {
-        all: revert !important;               /* 完全重置所有样式为浏览器默认 */
-        font-family: inherit !important;     /* 保持字体继承 */
-        color: inherit !important;           /* 保持颜色继承 */
-      }
-
-      /* 暗色模式下也保持默认样式 */
-      .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
-        all: revert !important;               /* 暗色模式下也完全重置 */
-        font-family: inherit !important;     /* 保持字体继承 */
-        color: inherit !important;           /* 保持颜色继承 */
-      }
-
-      /* 确保移除所有可能的伪元素 */
-      h2::before, h2::after,
-      h3::before, h3::after,
-      h4::before, h4::after,
-      h5::before, h5::after,
-      h6::before, h6::after {
-        display: none !important;            /* 强制隐藏所有伪元素 */
-        content: none !important;            /* 移除伪元素内容 */
-      }
-
-      /* 暗色模式下也移除伪元素 */
-      .dark h2::before, .dark h2::after,
-      .dark h3::before, .dark h3::after,
-      .dark h4::before, .dark h4::after,
-      .dark h5::before, .dark h5::after,
-      .dark h6::before, .dark h6::after {
-        display: none !important;            /* 强制隐藏所有伪元素 */
-        content: none !important;            /* 移除伪元素内容 */
       }
 
       /* ===== 统计板块样式优化 ===== */
