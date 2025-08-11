@@ -233,7 +233,7 @@ const Style = () => {
         border-radius: 0;                     /* 无圆角，保持简洁 */
         font-style: normal;                   /* 正常字体，不斜体 */
         color: inherit;                       /* 继承正文颜色 */
-        font-size: inherit;                   /* 继承正文字号 */
+        font-size: 16px;                      /* 固定字体大小为16px */
         font-weight: inherit;                 /* 继承正文字重 */
         line-height: inherit;                 /* 继承正文行高 */
         position: relative;                   /* 为伪元素定位 */
