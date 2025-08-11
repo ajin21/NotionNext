@@ -26,7 +26,12 @@ const Style = () => {
       
       /* 1. notion-link 元素样式覆盖 */
       .notion-link {
-        border-bottom: 0.05em solid !important; /* 添加下边框 */
+        border-bottom: 0.05em solid #10B981 !important; /* 添加绿色下边框 */
+      }
+
+      /* 2. 暗色模式下的notion-link */
+      .dark .notion-link {
+        border-bottom-color: #34D399 !important; /* 暗色模式亮绿色下边框 */
       }
 
       /* ===== 超链接模块 - 平滑悬停动画 ===== */
@@ -247,10 +252,75 @@ const Style = () => {
         color: inherit;                       /* 继承暗色模式正文颜色 */
       }
 
-      /* ===== 标题样式重置 - 恢复所有标题默认样式 ===== */
+      /* ===== 一级标题模块 - 静态美化效果 ===== */
       
-      /* 1. 重置所有标题为默认样式 */
-      h1, h2, h3, h4, h5, h6 {
+      /* 1. 一级标题基础样式 - 无动画版本 */
+      h1 {
+        font-size: 2.5rem;                   /* 更大的字号 */
+        font-weight: 800;                    /* 粗体 */
+        color: #1f2937;                      /* 深灰色文字 */
+        margin: 40px 0 32px 0;               /* 更大的上下间距 */
+        padding: 20px 0 24px 0;              /* 内边距 */
+        position: relative;                  /* 为伪元素定位 */
+        line-height: 1.2;                   /* 行高 */
+        letter-spacing: -0.025em;            /* 字母间距 */
+        background: linear-gradient(135deg, #1f2937 0%, #374151 100%); /* 文字渐变 */
+        background-clip: text;               /* 渐变裁剪到文字 */
+        -webkit-background-clip: text;       /* Safari 兼容 */
+        -webkit-text-fill-color: transparent; /* 透明文字显示渐变 */
+      }
+
+      /* 2. 标题装饰条 - 静态渐变线条 */
+      h1::after {
+        content: '';                         /* 创建伪元素 */
+        position: absolute;                  /* 绝对定位 */
+        bottom: 0;                          /* 底部对齐 */
+        left: 0;                            /* 从左侧开始 */
+        width: 120px;                       /* 固定宽度 */
+        height: 4px;                        /* 装饰条高度 */
+        background: linear-gradient(90deg, 
+          #10B981 0%, 
+          #059669 50%, 
+          #047857 100%
+        );                                  /* 三色渐变 */
+        border-radius: 2px;                 /* 圆角 */
+        box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3); /* 发光效果 */
+      }
+
+      /* 3. 暗色模式下的一级标题 */
+      .dark h1 {
+        background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%); /* 暗色模式文字渐变 */
+        background-clip: text;              /* 渐变裁剪到文字 */
+        -webkit-background-clip: text;      /* Safari 兼容 */
+        -webkit-text-fill-color: transparent; /* 透明文字显示渐变 */
+      }
+
+      .dark h1::after {
+        background: linear-gradient(90deg, 
+          #34D399 0%, 
+          #10B981 50%, 
+          #059669 100%
+        );                                  /* 暗色模式装饰条渐变 */
+        box-shadow: 0 2px 8px rgba(52, 211, 153, 0.4); /* 暗色模式发光 */
+      }
+
+      /* 4. 响应式优化 */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2rem;                  /* 移动端较小字号 */
+          margin: 24px 0 20px 0;           /* 移动端较小间距 */
+          padding: 16px 0 20px 0;          /* 移动端内边距 */
+        }
+        
+        h1::after {
+          width: 80px;                     /* 移动端较短装饰条 */
+        }
+      }
+
+      /* ===== 二三级标题样式重置 - 仅重置二三级标题 ===== */
+      
+      /* 1. 重置二三级标题为默认样式 */
+      h2, h3, h4, h5, h6 {
         /* 移除所有自定义样式，让标题使用浏览器/主题默认样式 */
         font-size: unset !important;        /* 恢复默认字号 */
         font-weight: unset !important;      /* 恢复默认字重 */
@@ -266,18 +336,17 @@ const Style = () => {
         position: static !important;        /* 恢复默认定位 */
       }
 
-      /* 2. 移除所有标题的伪元素 */
-      h1::before, h1::after,
+      /* 2. 移除二三级标题的伪元素 */
       h2::before, h2::after,
       h3::before, h3::after,
       h4::before, h4::after,
       h5::before, h5::after,
       h6::before, h6::after {
-        display: none !important;           /* 隐藏所有标题伪元素 */
+        display: none !important;           /* 隐藏二三级标题伪元素 */
       }
 
-      /* 3. 暗色模式下也重置所有标题 */
-      .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+      /* 3. 暗色模式下也重置二三级标题 */
+      .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
         font-size: unset !important;        /* 恢复默认字号 */
         font-weight: unset !important;      /* 恢复默认字重 */
         color: unset !important;            /* 恢复默认颜色 */
