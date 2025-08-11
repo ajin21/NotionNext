@@ -216,25 +216,28 @@ const Style = () => {
         box-shadow: 0 2px 8px rgba(52, 211, 153, 0.1) !important; /* 暗色模式代码块阴影 */
       }
 
-      /* ===== 引用块模块 - 简洁绿色边框 ===== */
+      /* ===== 引用块模块 - 绿色侧边框正文样式 ===== */
       
-      /* 1. 引用块基础样式 - 更自然融入 */
+      /* 1. 引用块基础样式 - 绿色侧边框，正文样式 */
       blockquote {
-        background: #f9fafb;                    /* 简洁的浅灰背景 */
-        border-left: 3px solid #22C55E;        /* 稍细的绿色边框 */
-        padding: 16px 20px;                    /* 适中的内边距 */
-        margin: 20px 0;                        /* 标准间距 */
-        border-radius: 0 6px 6px 0;            /* 小圆角 */
-        font-style: italic;                    /* 斜体文字 */
-        color: #4b5563;                        /* 中性灰色文字 */
-        position: relative;                    /* 为伪元素定位 */
+        background: transparent;               /* 透明背景，和正文一样 */
+        border-left: 4px solid #10B981;       /* 绿色侧边框 */
+        padding: 16px 20px;                   /* 适中的内边距 */
+        margin: 20px 0;                       /* 标准间距 */
+        border-radius: 0;                     /* 无圆角，保持简洁 */
+        font-style: normal;                   /* 正常字体，不斜体 */
+        color: inherit;                       /* 继承正文颜色 */
+        font-size: inherit;                   /* 继承正文字号 */
+        font-weight: inherit;                 /* 继承正文字重 */
+        line-height: inherit;                 /* 继承正文行高 */
+        position: relative;                   /* 为伪元素定位 */
       }
 
       /* 2. 暗色模式下的引用块样式 */
       .dark blockquote {
-        background: #1f2937;                   /* 暗色背景 */
-        border-left-color: #34D399;           /* 更新为翡翠绿边框 */
-        color: #d1d5db;                       /* 浅色文字 */
+        background: transparent;              /* 暗色模式透明背景 */
+        border-left-color: #34D399;          /* 暗色模式绿色侧边框 */
+        color: inherit;                       /* 继承暗色模式正文颜色 */
       }
 
       /* ===== 一级标题模块 - 静态美化效果 ===== */
@@ -302,95 +305,59 @@ const Style = () => {
         }
       }
 
-      /* ===== 二三级标题模块 - 简洁超链接样式 ===== */
+      /* ===== 标题内超链接透明化 - 仅处理超链接，不影响标题默认样式 ===== */
       
-      /* 1. 二级标题基础样式 */
-      h2 {
-        font-size: 1.875rem;                /* 标准字号 */
-        font-weight: 700;                   /* 粗体 */
-        color: #374151;                     /* 深灰色 */
-        margin: 32px 0 20px 0;              /* 标准间距 */
-        line-height: 1.3;                  /* 行高 */
-        position: relative;                 /* 为伪元素定位 */
-      }
-
-      /* 2. 三级标题基础样式 */
-      h3 {
-        font-size: 1.5rem;                  /* 标准字号 */
-        font-weight: 600;                   /* 中粗体 */
-        color: #4b5563;                     /* 中灰色 */
-        margin: 28px 0 16px 0;              /* 标准间距 */
-        line-height: 1.4;                  /* 行高 */
-        position: relative;                 /* 为伪元素定位 */
-      }
-
-      /* 3. 二三级标题内的超链接 - 完全透明化 */
+      /* 1. 所有标题内的超链接 - 完全透明化 */
+      h1 a,
       h2 a,
-      h3 a {
-        color: inherit;                     /* 继承标题颜色 */
-        text-decoration: none;              /* 去除下划线 */
-        display: inline;                    /* 行内显示 */
-        padding: 0;                         /* 无内边距 */
-        margin: 0;                          /* 无外边距 */
-        background: transparent;            /* 透明背景 */
-        border: none;                       /* 无边框 */
-        outline: none;                      /* 无轮廓 */
-        box-shadow: none;                   /* 无阴影 */
-        transition: none;                   /* 无过渡效果 */
-        font-weight: inherit;               /* 继承字重 */
-        font-size: inherit;                 /* 继承字号 */
-        line-height: inherit;               /* 继承行高 */
-        letter-spacing: inherit;            /* 继承字间距 */
+      h3 a,
+      h4 a,
+      h5 a,
+      h6 a {
+        color: inherit !important;          /* 继承标题颜色 */
+        text-decoration: none !important;   /* 去除下划线 */
+        display: inline !important;         /* 行内显示 */
+        padding: 0 !important;              /* 无内边距 */
+        margin: 0 !important;               /* 无外边距 */
+        background: transparent !important; /* 透明背景 */
+        border: none !important;            /* 无边框 */
+        outline: none !important;           /* 无轮廓 */
+        box-shadow: none !important;        /* 无阴影 */
+        transition: none !important;        /* 无过渡效果 */
+        font-weight: inherit !important;    /* 继承字重 */
+        font-size: inherit !important;      /* 继承字号 */
+        line-height: inherit !important;    /* 继承行高 */
+        letter-spacing: inherit !important; /* 继承字间距 */
       }
 
-      /* 4. 去除所有伪元素效果 */
+      /* 2. 去除所有伪元素效果 */
+      h1 a::before,
+      h1 a::after,
       h2 a::before,
       h2 a::after,
       h3 a::before,
-      h3 a::after {
-        display: none;                      /* 隐藏所有伪元素 */
+      h3 a::after,
+      h4 a::before,
+      h4 a::after,
+      h5 a::before,
+      h5 a::after,
+      h6 a::before,
+      h6 a::after {
+        display: none !important;           /* 隐藏所有伪元素 */
       }
 
-      /* 5. 悬停时保持原样 */
+      /* 3. 悬停时保持原样 */
+      h1 a:hover,
       h2 a:hover,
-      h3 a:hover {
-        color: inherit;                     /* 悬停时保持原色 */
-        background: transparent;            /* 悬停时保持透明 */
-        text-decoration: none;              /* 悬停时无下划线 */
-        box-shadow: none;                   /* 悬停时无阴影 */
-        transform: none;                    /* 悬停时无变换 */
-      }
-
-      /* 6. 暗色模式下的二三级标题 */
-      .dark h2 {
-        color: #e5e7eb;                     /* 暗色模式浅色 */
-      }
-
-      .dark h3 {
-        color: #d1d5db;                     /* 暗色模式中浅色 */
-      }
-
-      .dark h2 a,
-      .dark h3 a {
-        color: inherit;                     /* 暗色模式继承颜色 */
-      }
-
-      .dark h2 a:hover,
-      .dark h3 a:hover {
-        color: inherit;                     /* 暗色模式悬停保持原色 */
-      }
-
-      /* 7. 响应式优化 */
-      @media (max-width: 768px) {
-        h2 {
-          font-size: 1.5rem;                /* 移动端较小字号 */
-          margin: 24px 0 16px 0;            /* 移动端较小间距 */
-        }
-        
-        h3 {
-          font-size: 1.25rem;               /* 移动端较小字号 */
-          margin: 20px 0 12px 0;            /* 移动端较小间距 */
-        }
+      h3 a:hover,
+      h4 a:hover,
+      h5 a:hover,
+      h6 a:hover {
+        color: inherit !important;          /* 悬停时保持原色 */
+        background: transparent !important; /* 悬停时保持透明 */
+        text-decoration: none !important;   /* 悬停时无下划线 */
+        box-shadow: none !important;        /* 悬停时无阴影 */
+        transform: none !important;         /* 悬停时无变换 */
       }
 
       /* ===== 导航栏字体样式优化 ===== */
