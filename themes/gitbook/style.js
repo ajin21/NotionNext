@@ -40,7 +40,7 @@ const Style = () => {
         text-decoration: none;               /* 去除默认下划线 */
         position: relative;                  /* 为伪元素定位 */
         display: inline;                     /* 行内元素，保持文字流 */
-        padding: 2px 6px;                    /* 适中的内边距 */
+        padding: 2px 0;                      /* 只保留上下内边距，去掉左右内边距 */
         border-radius: 8px;                  /* 圆角矩形 */
         transition: all 0.3s ease-out;      /* 平滑缓动函数 */
         background: transparent;             /* 透明背景 */
@@ -264,7 +264,7 @@ const Style = () => {
         -webkit-text-fill-color: transparent; /* 透明文字显示渐变 */
       }
 
-      /* 2. 标题装饰条 - 静态渐变线条 */
+      /* 2. 标题装饰条 - 纯绿色线条 */
       h1::after {
         content: '';                         /* 创建伪元素 */
         position: absolute;                  /* 绝对定位 */
@@ -272,11 +272,7 @@ const Style = () => {
         left: 0;                            /* 从左侧开始 */
         width: 120px;                       /* 固定宽度 */
         height: 4px;                        /* 装饰条高度 */
-        background: linear-gradient(90deg, 
-          #10B981 0%, 
-          #059669 50%, 
-          #047857 100%
-        );                                  /* 三色渐变 */
+        background: #10B981;                /* 纯绿色 */
         border-radius: 2px;                 /* 圆角 */
         box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3); /* 发光效果 */
       }
@@ -290,11 +286,7 @@ const Style = () => {
       }
 
       .dark h1::after {
-        background: linear-gradient(90deg, 
-          #34D399 0%, 
-          #10B981 50%, 
-          #059669 100%
-        );                                  /* 暗色模式装饰条渐变 */
+        background: #34D399;                /* 暗色模式纯绿色 */
         box-shadow: 0 2px 8px rgba(52, 211, 153, 0.4); /* 暗色模式发光 */
       }
 
@@ -311,49 +303,7 @@ const Style = () => {
         }
       }
 
-      /* ===== 二三级标题样式重置 - 仅重置二三级标题 ===== */
-      
-      /* 1. 重置二三级标题为默认样式 */
-      h2, h3, h4, h5, h6 {
-        /* 移除所有自定义样式，让标题使用浏览器/主题默认样式 */
-        font-size: unset !important;        /* 恢复默认字号 */
-        font-weight: unset !important;      /* 恢复默认字重 */
-        color: unset !important;            /* 恢复默认颜色 */
-        margin: unset !important;           /* 恢复默认间距 */
-        padding: unset !important;          /* 恢复默认内边距 */
-        line-height: unset !important;      /* 恢复默认行高 */
-        letter-spacing: unset !important;   /* 恢复默认字间距 */
-        background: unset !important;       /* 恢复默认背景 */
-        background-clip: unset !important;  /* 恢复默认背景裁剪 */
-        -webkit-background-clip: unset !important; /* 恢复默认背景裁剪 */
-        -webkit-text-fill-color: unset !important; /* 恢复默认文字填充 */
-        position: static !important;        /* 恢复默认定位 */
-      }
 
-      /* 2. 移除二三级标题的伪元素 */
-      h2::before, h2::after,
-      h3::before, h3::after,
-      h4::before, h4::after,
-      h5::before, h5::after,
-      h6::before, h6::after {
-        display: none !important;           /* 隐藏二三级标题伪元素 */
-      }
-
-      /* 3. 暗色模式下也重置二三级标题 */
-      .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
-        font-size: unset !important;        /* 恢复默认字号 */
-        font-weight: unset !important;      /* 恢复默认字重 */
-        color: unset !important;            /* 恢复默认颜色 */
-        margin: unset !important;           /* 恢复默认间距 */
-        padding: unset !important;          /* 恢复默认内边距 */
-        line-height: unset !important;      /* 恢复默认行高 */
-        letter-spacing: unset !important;   /* 恢复默认字间距 */
-        background: unset !important;       /* 恢复默认背景 */
-        background-clip: unset !important;  /* 恢复默认背景裁剪 */
-        -webkit-background-clip: unset !important; /* 恢复默认背景裁剪 */
-        -webkit-text-fill-color: unset !important; /* 恢复默认文字填充 */
-        position: static !important;        /* 恢复默认定位 */
-      }
 
       /* ===== 标题内超链接透明化 - 仅处理超链接，不影响标题默认样式 ===== */
       
