@@ -152,40 +152,68 @@ const Style = () => {
 
       /* ===== 代码引用模块 - 绿色字体淡绿色背景 ===== */
       
-      /* 1. 行内代码样式 */
-      code {
-        color: #059669;                        /* 绿色字体 */
-        background: rgba(16, 185, 129, 0.1);  /* 淡绿色背景 */
-        padding: 2px 6px;                     /* 内边距 */
-        border-radius: 4px;                   /* 圆角 */
-        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; /* 等宽字体 */
-        font-size: 0.875em;                   /* 稍小的字号 */
-        font-weight: 500;                     /* 中等粗细 */
-        border: 1px solid rgba(16, 185, 129, 0.2); /* 淡绿色边框 */
+      /* 1. 行内代码样式 - 高优先级 */
+      code,
+      .notion-page code,
+      .notion-text code,
+      article code,
+      .post-content code,
+      p code,
+      li code,
+      td code,
+      span code {
+        color: #059669 !important;                        /* 绿色字体 */
+        background: rgba(16, 185, 129, 0.15) !important; /* 淡绿色背景 */
+        padding: 3px 8px !important;                     /* 内边距 */
+        border-radius: 6px !important;                   /* 圆角 */
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace !important; /* 等宽字体 */
+        font-size: 0.875em !important;                   /* 稍小的字号 */
+        font-weight: 600 !important;                     /* 中等粗细 */
+        border: 1px solid rgba(16, 185, 129, 0.3) !important; /* 淡绿色边框 */
+        box-shadow: 0 1px 3px rgba(16, 185, 129, 0.1) !important; /* 轻微阴影 */
       }
 
       /* 2. 代码块样式 */
-      pre code {
-        color: #059669;                        /* 绿色字体 */
-        background: rgba(16, 185, 129, 0.08); /* 更淡的绿色背景 */
-        display: block;                       /* 块级元素 */
-        padding: 16px;                        /* 内边距 */
-        border-radius: 8px;                   /* 圆角 */
-        border: 1px solid rgba(16, 185, 129, 0.15); /* 淡绿色边框 */
-        overflow-x: auto;                     /* 水平滚动 */
+      pre code,
+      .notion-page pre code,
+      .notion-text pre code,
+      article pre code,
+      .post-content pre code {
+        color: #059669 !important;                        /* 绿色字体 */
+        background: rgba(16, 185, 129, 0.08) !important; /* 更淡的绿色背景 */
+        display: block !important;                       /* 块级元素 */
+        padding: 16px !important;                        /* 内边距 */
+        border-radius: 8px !important;                   /* 圆角 */
+        border: 1px solid rgba(16, 185, 129, 0.2) !important; /* 淡绿色边框 */
+        overflow-x: auto !important;                     /* 水平滚动 */
+        box-shadow: 0 2px 8px rgba(16, 185, 129, 0.1) !important; /* 轻微阴影 */
       }
 
       /* 3. 暗色模式下的代码样式 */
-      .dark code {
-        color: #34D399;                       /* 暗色模式亮绿色字体 */
-        background: rgba(52, 211, 153, 0.12); /* 暗色模式淡绿背景 */
-        border-color: rgba(52, 211, 153, 0.25); /* 暗色模式边框 */
+      .dark code,
+      .dark .notion-page code,
+      .dark .notion-text code,
+      .dark article code,
+      .dark .post-content code,
+      .dark p code,
+      .dark li code,
+      .dark td code,
+      .dark span code {
+        color: #34D399 !important;                       /* 暗色模式亮绿色字体 */
+        background: rgba(52, 211, 153, 0.15) !important; /* 暗色模式淡绿背景 */
+        border-color: rgba(52, 211, 153, 0.3) !important; /* 暗色模式边框 */
+        box-shadow: 0 1px 3px rgba(52, 211, 153, 0.1) !important; /* 暗色模式阴影 */
       }
 
-      .dark pre code {
-        color: #34D399;                       /* 暗色模式亮绿色字体 */
-        background: rgba(52, 211, 153, 0.1);  /* 暗色模式代码块背景 */
-        border-color: rgba(52, 211, 153, 0.2); /* 暗色模式代码块边框 */
+      .dark pre code,
+      .dark .notion-page pre code,
+      .dark .notion-text pre code,
+      .dark article pre code,
+      .dark .post-content pre code {
+        color: #34D399 !important;                       /* 暗色模式亮绿色字体 */
+        background: rgba(52, 211, 153, 0.1) !important;  /* 暗色模式代码块背景 */
+        border-color: rgba(52, 211, 153, 0.25) !important; /* 暗色模式代码块边框 */
+        box-shadow: 0 2px 8px rgba(52, 211, 153, 0.1) !important; /* 暗色模式代码块阴影 */
       }
 
       /* ===== 引用块模块 - 简洁绿色边框 ===== */
