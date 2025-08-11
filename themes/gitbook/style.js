@@ -24,11 +24,11 @@ const Style = () => {
 
       /* ===== 超链接模块 - 平滑悬停动画 ===== */
       
-      /* 1. 文章内容区域的超链接基础样式 */
-      .notion-page a,
-      .notion-text a,
-      article a,
-      .post-content a {
+      /* 1. 文章内容区域的超链接基础样式 - 排除标题内链接 */
+      .notion-page a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a),
+      .notion-text a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a),
+      article a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a),
+      .post-content a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a) {
         color: #10B981;                      /* 翡翠绿 */
         text-decoration: none;               /* 去除默认下划线 */
         position: relative;                  /* 为伪元素定位 */
@@ -41,11 +41,11 @@ const Style = () => {
         line-height: inherit;                /* 继承行高 */
       }
 
-      /* 2. 下划线动画效果 - 从左到右展开 */
-      .notion-page a::before,
-      .notion-text a::before,
-      article a::before,
-      .post-content a::before {
+      /* 2. 下划线动画效果 - 从左到右展开 - 排除标题内链接 */
+      .notion-page a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::before,
+      .notion-text a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::before,
+      article a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::before,
+      .post-content a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::before {
         content: '';                         /* 创建伪元素 */
         position: absolute;                  /* 绝对定位 */
         bottom: 0;                          /* 底部对齐 */
@@ -57,11 +57,11 @@ const Style = () => {
         border-radius: 1px;                 /* 圆角下划线 */
       }
 
-      /* 3. 圆角矩形背景动画效果 - 平滑展开 */
-      .notion-page a::after,
-      .notion-text a::after,
-      article a::after,
-      .post-content a::after {
+      /* 3. 圆角矩形背景动画效果 - 平滑展开 - 排除标题内链接 */
+      .notion-page a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::after,
+      .notion-text a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::after,
+      article a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::after,
+      .post-content a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::after {
         content: '';                         /* 创建伪元素 */
         position: absolute;                  /* 绝对定位 */
         top: 0;                             /* 顶部对齐 */
@@ -75,57 +75,57 @@ const Style = () => {
         z-index: -1;                        /* 置于文字下方 */
       }
 
-      /* 4. 悬停时的效果 */
-      .notion-page a:hover,
-      .notion-text a:hover,
-      article a:hover,
-      .post-content a:hover {
+      /* 4. 悬停时的效果 - 排除标题内链接 */
+      .notion-page a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover,
+      .notion-text a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover,
+      article a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover,
+      .post-content a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover {
         color: #059669;                     /* 深翡翠绿 */
         box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15); /* 柔和阴影 */
       }
 
-      /* 5. 悬停时下划线展开 */
-      .notion-page a:hover::before,
-      .notion-text a:hover::before,
-      article a:hover::before,
-      .post-content a:hover::before {
+      /* 5. 悬停时下划线展开 - 排除标题内链接 */
+      .notion-page a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover::before,
+      .notion-text a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover::before,
+      article a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover::before,
+      .post-content a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover::before {
         width: 100%;                        /* 下划线展开到全宽 */
       }
 
-      /* 6. 悬停时背景展开 */
-      .notion-page a:hover::after,
-      .notion-text a:hover::after,
-      article a:hover::after,
-      .post-content a:hover::after {
+      /* 6. 悬停时背景展开 - 排除标题内链接 */
+      .notion-page a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover::after,
+      .notion-text a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover::after,
+      article a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover::after,
+      .post-content a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover::after {
         width: calc(100% + 8px);            /* 背景展开，稍微超出文字 */
       }
 
-      /* 7. 暗色模式下的超链接样式 */
-      .dark .notion-page a,
-      .dark .notion-text a,
-      .dark article a,
-      .dark .post-content a {
+      /* 7. 暗色模式下的超链接样式 - 排除标题内链接 */
+      .dark .notion-page a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a),
+      .dark .notion-text a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a),
+      .dark article a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a),
+      .dark .post-content a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a) {
         color: #34D399;                     /* 亮翡翠绿 */
       }
 
-      .dark .notion-page a::before,
-      .dark .notion-text a::before,
-      .dark article a::before,
-      .dark .post-content a::before {
+      .dark .notion-page a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::before,
+      .dark .notion-text a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::before,
+      .dark article a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::before,
+      .dark .post-content a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::before {
         background: linear-gradient(90deg, #34D399, #10B981); /* 暗色模式渐变 */
       }
 
-      .dark .notion-page a::after,
-      .dark .notion-text a::after,
-      .dark article a::after,
-      .dark .post-content a::after {
+      .dark .notion-page a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::after,
+      .dark .notion-text a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::after,
+      .dark article a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::after,
+      .dark .post-content a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::after {
         background: rgba(52, 211, 153, 0.12); /* 暗色模式背景 */
       }
 
-      .dark .notion-page a:hover,
-      .dark .notion-text a:hover,
-      .dark article a:hover,
-      .dark .post-content a:hover {
+      .dark .notion-page a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover,
+      .dark .notion-text a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover,
+      .dark article a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover,
+      .dark .post-content a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover {
         color: #6EE7B7;                     /* 更亮的绿色 */
         box-shadow: 0 4px 12px rgba(52, 211, 153, 0.2); /* 暗色模式阴影 */
       }
