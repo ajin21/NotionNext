@@ -314,157 +314,138 @@ const Style = () => {
 
       /* ===== 代码块模块 - 绿色主题 ===== */
       
-      /* 1. 行内代码样式 - 强制覆盖 */
-      code,
-      .notion-page code,
-      .notion-text code,
-      article code,
-      .post-content code,
-      p code,
-      span code {
-        background: rgba(16, 185, 129, 0.1) !important;   /* 淡绿色背景 */
-        color: #059669 !important;                        /* 主绿色文字 */
-        padding: 2px 6px !important;                      /* 内边距 */
-        border-radius: 4px !important;                    /* 圆角 */
-        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace !important; /* 等宽字体 */
-        font-size: 0.875em !important;                   /* 稍小的字号 */
-        font-weight: 500 !important;                     /* 中等粗细 */
-        border: 1px solid rgba(16, 185, 129, 0.2) !important; /* 淡绿色边框 */
+      /* 1. 行内代码样式 */
+      code {
+        background: rgba(16, 185, 129, 0.1);   /* 淡绿色背景 */
+        color: #059669;                        /* 主绿色文字 */
+        padding: 2px 6px;                      /* 内边距 */
+        border-radius: 4px;                    /* 圆角 */
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; /* 等宽字体 */
+        font-size: 0.875em;                   /* 稍小的字号 */
+        font-weight: 500;                     /* 中等粗细 */
+        border: 1px solid rgba(16, 185, 129, 0.2); /* 淡绿色边框 */
       }
 
-      /* 2. 代码块容器样式 - 强制覆盖 */
-      pre,
-      .notion-page pre,
-      .notion-text pre,
-      article pre,
-      .post-content pre {
-        background: rgba(16, 185, 129, 0.08) !important;  /* 更淡的绿色背景 */
-        border: 1px solid rgba(16, 185, 129, 0.15) !important; /* 淡绿色边框 */
-        border-radius: 8px !important;                    /* 圆角 */
-        padding: 16px 20px !important;                    /* 内边距 */
-        margin: 16px 0 !important;                        /* 外边距 */
-        overflow-x: auto !important;                      /* 水平滚动 */
-        position: relative !important;                    /* 为伪元素定位 */
+      /* 2. 代码块容器样式 */
+      pre {
+        background: rgba(16, 185, 129, 0.08);  /* 更淡的绿色背景 */
+        border: 1px solid rgba(16, 185, 129, 0.15); /* 淡绿色边框 */
+        border-radius: 8px;                    /* 圆角 */
+        padding: 16px 20px;                    /* 内边距 */
+        margin: 16px 0;                        /* 外边距 */
+        overflow-x: auto;                      /* 水平滚动 */
+        position: relative;                    /* 为伪元素定位 */
       }
 
-      /* 3. 代码块内的代码样式 - 强制覆盖 */
-      pre code,
-      .notion-page pre code,
-      .notion-text pre code,
-      article pre code,
-      .post-content pre code {
-        background: transparent !important;               /* 透明背景 */
-        color: #047857 !important;                        /* 深绿色文字 */
-        padding: 0 !important;                           /* 去除内边距 */
-        border: none !important;                         /* 去除边框 */
-        border-radius: 0 !important;                     /* 去除圆角 */
-        font-size: 0.875rem !important;                  /* 代码块字号 */
-        line-height: 1.6 !important;                    /* 行高 */
+      /* 3. 代码块内的代码样式 */
+      pre code {
+        background: transparent;               /* 透明背景 */
+        color: #047857;                        /* 深绿色文字 */
+        padding: 0;                           /* 去除内边距 */
+        border: none;                         /* 去除边框 */
+        border-radius: 0;                     /* 去除圆角 */
+        font-size: 0.875rem;                  /* 代码块字号 */
+        line-height: 1.6;                    /* 行高 */
       }
 
-      /* 4. 暗色模式下的代码样式 - 强制覆盖 */
-      .dark code,
-      .dark .notion-page code,
-      .dark .notion-text code,
-      .dark article code,
-      .dark .post-content code,
-      .dark p code,
-      .dark span code {
-        background: rgba(52, 211, 153, 0.15) !important; /* 暗色模式淡绿背景 */
-        color: #34D399 !important;                       /* 暗色模式亮绿文字 */
-        border-color: rgba(52, 211, 153, 0.25) !important; /* 暗色模式边框 */
+      /* 4. 暗色模式下的代码样式 */
+      .dark code {
+        background: rgba(52, 211, 153, 0.15); /* 暗色模式淡绿背景 */
+        color: #34D399;                       /* 暗色模式亮绿文字 */
+        border-color: rgba(52, 211, 153, 0.25); /* 暗色模式边框 */
       }
 
-      .dark pre,
-      .dark .notion-page pre,
-      .dark .notion-text pre,
-      .dark article pre,
-      .dark .post-content pre {
-        background: rgba(52, 211, 153, 0.1) !important;  /* 暗色模式代码块背景 */
-        border-color: rgba(52, 211, 153, 0.2) !important; /* 暗色模式边框 */
+      .dark pre {
+        background: rgba(52, 211, 153, 0.1);  /* 暗色模式代码块背景 */
+        border-color: rgba(52, 211, 153, 0.2); /* 暗色模式边框 */
       }
 
-      .dark pre code,
-      .dark .notion-page pre code,
-      .dark .notion-text pre code,
-      .dark article pre code,
-      .dark .post-content pre code {
-        color: #6EE7B7 !important;                       /* 暗色模式更亮的绿色 */
+      .dark pre code {
+        color: #6EE7B7;                       /* 暗色模式更亮的绿色 */
       }
 
-      /* 5. 特殊代码块类型 - 强制覆盖 */
+      /* 5. 特殊代码块类型 */
       .notion-code,
-      .code-block,
-      .notion-code-block,
-      .highlight,
-      .hljs {
-        background: rgba(16, 185, 129, 0.08) !important;  /* 统一绿色背景 */
-        border: 1px solid rgba(16, 185, 129, 0.15) !important;
-        border-radius: 8px !important;
-        padding: 16px 20px !important;
-        margin: 16px 0 !important;
+      .code-block {
+        background: rgba(16, 185, 129, 0.08);  /* 统一绿色背景 */
+        border: 1px solid rgba(16, 185, 129, 0.15);
+        border-radius: 8px;
+        padding: 16px 20px;
+        margin: 16px 0;
       }
 
       .dark .notion-code,
-      .dark .code-block,
-      .dark .notion-code-block,
-      .dark .highlight,
-      .dark .hljs {
-        background: rgba(52, 211, 153, 0.1) !important;
-        border-color: rgba(52, 211, 153, 0.2) !important;
+      .dark .code-block {
+        background: rgba(52, 211, 153, 0.1);
+        border-color: rgba(52, 211, 153, 0.2);
       }
 
-      /* 6. 覆盖可能的语法高亮样式 */
-      .hljs,
-      .language-javascript,
-      .language-js,
-      .language-typescript,
-      .language-ts,
-      .language-css,
-      .language-html,
-      .language-json,
-      .language-bash,
-      .language-shell {
-        background: rgba(16, 185, 129, 0.08) !important;
-        color: #047857 !important;
-      }
-
-      .dark .hljs,
-      .dark .language-javascript,
-      .dark .language-js,
-      .dark .language-typescript,
-      .dark .language-ts,
-      .dark .language-css,
-      .dark .language-html,
-      .dark .language-json,
-      .dark .language-bash,
-      .dark .language-shell {
-        background: rgba(52, 211, 153, 0.1) !important;
-        color: #6EE7B7 !important;
-      }
-
-      /* ===== 二三级标题样式重置 ===== */
+      /* ===== 二三级标题样式完全重置 ===== */
       
-      /* 重置二三级标题为默认样式 */
-      h2, h3 {
-        font-size: inherit;                   /* 继承字号 */
-        font-weight: inherit;                 /* 继承粗细 */
-        color: inherit;                       /* 继承颜色 */
-        margin: inherit;                      /* 继承边距 */
-        padding: inherit;                     /* 继承内边距 */
-        position: static;                     /* 静态定位 */
-        line-height: inherit;                 /* 继承行高 */
-        letter-spacing: inherit;              /* 继承字母间距 */
-        background: none;                     /* 无背景 */
-        background-clip: initial;             /* 重置背景裁剪 */
-        -webkit-background-clip: initial;     /* 重置Safari背景裁剪 */
-        -webkit-text-fill-color: initial;    /* 重置文字填充色 */
+      /* 强制重置二三级标题为浏览器默认样式 */
+      h2, h3,
+      .notion-page h2, .notion-page h3,
+      .notion-text h2, .notion-text h3,
+      article h2, article h3,
+      .post-content h2, .post-content h3 {
+        all: revert !important;               /* 完全重置所有样式 */
+        font-size: revert !important;         /* 重置字号 */
+        font-weight: revert !important;       /* 重置粗细 */
+        color: revert !important;             /* 重置颜色 */
+        margin: revert !important;            /* 重置边距 */
+        padding: revert !important;           /* 重置内边距 */
+        position: static !important;          /* 静态定位 */
+        line-height: revert !important;       /* 重置行高 */
+        letter-spacing: revert !important;    /* 重置字母间距 */
+        background: none !important;          /* 无背景 */
+        background-clip: initial !important;  /* 重置背景裁剪 */
+        -webkit-background-clip: initial !important; /* 重置Safari背景裁剪 */
+        -webkit-text-fill-color: initial !important; /* 重置文字填充色 */
+        text-decoration: none !important;     /* 无装饰 */
+        border: none !important;              /* 无边框 */
+        box-shadow: none !important;          /* 无阴影 */
+        transform: none !important;           /* 无变换 */
+        transition: none !important;          /* 无过渡 */
       }
 
-      /* 移除二三级标题的伪元素 */
+      /* 强制移除二三级标题的所有伪元素 */
       h2::before, h2::after,
-      h3::before, h3::after {
-        display: none;                        /* 隐藏所有伪元素 */
+      h3::before, h3::after,
+      .notion-page h2::before, .notion-page h2::after,
+      .notion-page h3::before, .notion-page h3::after,
+      .notion-text h2::before, .notion-text h2::after,
+      .notion-text h3::before, .notion-text h3::after,
+      article h2::before, article h2::after,
+      article h3::before, article h3::after,
+      .post-content h2::before, .post-content h2::after,
+      .post-content h3::before, .post-content h3::after {
+        display: none !important;             /* 强制隐藏所有伪元素 */
+        content: none !important;             /* 移除内容 */
+      }
+
+      /* 暗色模式下也重置 */
+      .dark h2, .dark h3,
+      .dark .notion-page h2, .dark .notion-page h3,
+      .dark .notion-text h2, .dark .notion-text h3,
+      .dark article h2, .dark article h3,
+      .dark .post-content h2, .dark .post-content h3 {
+        all: revert !important;               /* 暗色模式下也完全重置 */
+        color: revert !important;             /* 重置颜色 */
+        background: none !important;          /* 无背景 */
+      }
+
+      .dark h2::before, .dark h2::after,
+      .dark h3::before, .dark h3::after,
+      .dark .notion-page h2::before, .dark .notion-page h2::after,
+      .dark .notion-page h3::before, .dark .notion-page h3::after,
+      .dark .notion-text h2::before, .dark .notion-text h2::after,
+      .dark .notion-text h3::before, .dark .notion-text h3::after,
+      .dark article h2::before, .dark article h2::after,
+      .dark article h3::before, .dark article h3::after,
+      .dark .post-content h2::before, .dark .post-content h2::after,
+      .dark .post-content h3::before, .dark .post-content h3::after {
+        display: none !important;             /* 暗色模式下强制隐藏伪元素 */
+        content: none !important;             /* 移除内容 */
       }
 
       /* ===== 统计板块样式优化 ===== */
