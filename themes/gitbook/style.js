@@ -150,89 +150,81 @@ const Style = () => {
         box-shadow: 0 6px 20px rgba(16, 185, 129, 0.25); /* 更强的阴影 */
       }
 
-      /* ===== 引用块模块 - 简洁绿色边框 ===== */
+      /* ===== 引用块模块 - 修复颜色显示 ===== */
       
-      /* 1. 引用块基础样式 - 更自然融入 */
+      /* 1. 引用块基础样式 - 确保颜色正确显示 */
       blockquote {
-        background: #f9fafb;                    /* 简洁的浅灰背景 */
-        border-left: 3px solid #22C55E;        /* 稍细的绿色边框 */
-        padding: 16px 20px;                    /* 适中的内边距 */
-        margin: 20px 0;                        /* 标准间距 */
-        border-radius: 0 6px 6px 0;            /* 小圆角 */
-        font-style: italic;                    /* 斜体文字 */
-        color: #4b5563;                        /* 中性灰色文字 */
-        position: relative;                    /* 为伪元素定位 */
+        background: rgba(16, 185, 129, 0.05) !important;  /* 淡绿色背景，强制应用 */
+        border-left: 4px solid #10B981 !important;        /* 翡翠绿边框，强制应用 */
+        padding: 16px 20px;                               /* 适中的内边距 */
+        margin: 20px 0;                                   /* 标准间距 */
+        border-radius: 0 8px 8px 0;                       /* 圆角 */
+        font-style: normal;                               /* 正常字体样式 */
+        color: #374151 !important;                        /* 深灰色文字，强制应用 */
+        position: relative;                               /* 为伪元素定位 */
+        border-top: none;                                 /* 移除顶部边框 */
+        border-right: none;                               /* 移除右边框 */
+        border-bottom: none;                              /* 移除底部边框 */
       }
 
       /* 2. 暗色模式下的引用块样式 */
       .dark blockquote {
-        background: #1f2937;                   /* 暗色背景 */
-        border-left-color: #34D399;           /* 更新为翡翠绿边框 */
-        color: #d1d5db;                       /* 浅色文字 */
+        background: rgba(52, 211, 153, 0.08) !important; /* 暗色模式淡绿背景，强制应用 */
+        border-left-color: #34D399 !important;           /* 暗色模式翡翠绿边框，强制应用 */
+        color: #e5e7eb !important;                       /* 暗色模式浅色文字，强制应用 */
       }
 
-      /* ===== 一级标题模块 - 静态美化效果 ===== */
+      /* ===== 一级标题模块 - 圆角矩形背景设计 ===== */
       
-      /* 1. 一级标题基础样式 - 无动画版本 */
+      /* 1. 一级标题基础样式 - 参考设计图的圆角矩形效果 */
       h1 {
-        font-size: 2.5rem;                   /* 更大的字号 */
-        font-weight: 800;                    /* 粗体 */
-        color: #1f2937;                      /* 深灰色文字 */
-        margin: 40px 0 32px 0;               /* 更大的上下间距 */
-        padding: 20px 0 24px 0;              /* 内边距 */
-        position: relative;                  /* 为伪元素定位 */
-        line-height: 1.2;                   /* 行高 */
-        letter-spacing: -0.025em;            /* 字母间距 */
-        background: linear-gradient(135deg, #1f2937 0%, #374151 100%); /* 文字渐变 */
-        background-clip: text;               /* 渐变裁剪到文字 */
-        -webkit-background-clip: text;       /* Safari 兼容 */
-        -webkit-text-fill-color: transparent; /* 透明文字显示渐变 */
+        font-size: 2.25rem;                 /* 适中的字号 */
+        font-weight: 600;                   /* 中等粗体 */
+        color: #ef4444 !important;          /* 红色文字，强制应用 */
+        margin: 32px 0 24px 0;              /* 适中的上下间距 */
+        padding: 20px 32px;                 /* 内边距 */
+        position: relative;                 /* 为伪元素定位 */
+        line-height: 1.3;                  /* 行高 */
+        letter-spacing: 0.02em;             /* 轻微字母间距 */
+        display: inline-block;              /* 行内块元素，适应内容宽度 */
+        background: #f1f5f9;                /* 浅灰背景 */
+        border: 3px solid #a7f3d0;         /* 淡绿色边框 */
+        border-radius: 20px;                /* 大圆角 */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* 柔和阴影 */
+        /* 移除渐变文字效果 */
+        background-clip: initial;
+        -webkit-background-clip: initial;
+        -webkit-text-fill-color: initial;
       }
 
-      /* 2. 标题装饰条 - 静态渐变线条 */
+      /* 2. 移除装饰条 */
       h1::after {
-        content: '';                         /* 创建伪元素 */
-        position: absolute;                  /* 绝对定位 */
-        bottom: 0;                          /* 底部对齐 */
-        left: 0;                            /* 从左侧开始 */
-        width: 120px;                       /* 固定宽度 */
-        height: 4px;                        /* 装饰条高度 */
-        background: linear-gradient(90deg, 
-          #10B981 0%, 
-          #059669 50%, 
-          #047857 100%
-        );                                  /* 三色渐变 */
-        border-radius: 2px;                 /* 圆角 */
-        box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3); /* 发光效果 */
+        display: none;                      /* 隐藏装饰条 */
       }
 
       /* 3. 暗色模式下的一级标题 */
       .dark h1 {
-        background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%); /* 暗色模式文字渐变 */
-        background-clip: text;              /* 渐变裁剪到文字 */
-        -webkit-background-clip: text;      /* Safari 兼容 */
-        -webkit-text-fill-color: transparent; /* 透明文字显示渐变 */
+        color: #ef4444 !important;          /* 暗色模式保持红色文字 */
+        background: #1e293b;                /* 暗色背景 */
+        border-color: #34d399;              /* 暗色模式绿色边框 */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* 暗色模式阴影 */
+        /* 移除渐变文字效果 */
+        background-clip: initial;
+        -webkit-background-clip: initial;
+        -webkit-text-fill-color: initial;
       }
 
       .dark h1::after {
-        background: linear-gradient(90deg, 
-          #34D399 0%, 
-          #10B981 50%, 
-          #059669 100%
-        );                                  /* 暗色模式装饰条渐变 */
-        box-shadow: 0 2px 8px rgba(52, 211, 153, 0.4); /* 暗色模式发光 */
+        display: none;                      /* 暗色模式也隐藏装饰条 */
       }
 
       /* 4. 响应式优化 */
       @media (max-width: 768px) {
         h1 {
-          font-size: 2rem;                  /* 移动端较小字号 */
+          font-size: 1.875rem;              /* 移动端较小字号 */
           margin: 24px 0 20px 0;           /* 移动端较小间距 */
-          padding: 16px 0 20px 0;          /* 移动端内边距 */
-        }
-        
-        h1::after {
-          width: 80px;                     /* 移动端较短装饰条 */
+          padding: 16px 24px;              /* 移动端内边距 */
+          border-radius: 16px;             /* 移动端较小圆角 */
         }
       }
 
@@ -380,28 +372,40 @@ const Style = () => {
         border-color: rgba(52, 211, 153, 0.2);
       }
 
-      /* ===== 二三级标题样式重置 ===== */
+      /* ===== 二三级标题样式完全重置 ===== */
       
-      /* 重置二三级标题为默认样式 */
-      h2, h3 {
-        font-size: inherit;                   /* 继承字号 */
-        font-weight: inherit;                 /* 继承粗细 */
-        color: inherit;                       /* 继承颜色 */
-        margin: inherit;                      /* 继承边距 */
-        padding: inherit;                     /* 继承内边距 */
-        position: static;                     /* 静态定位 */
-        line-height: inherit;                 /* 继承行高 */
-        letter-spacing: inherit;              /* 继承字母间距 */
-        background: none;                     /* 无背景 */
-        background-clip: initial;             /* 重置背景裁剪 */
-        -webkit-background-clip: initial;     /* 重置Safari背景裁剪 */
-        -webkit-text-fill-color: initial;    /* 重置文字填充色 */
+      /* 完全重置二三级标题为浏览器默认样式 */
+      h2, h3, h4, h5, h6 {
+        all: revert !important;               /* 完全重置所有样式为浏览器默认 */
+        font-family: inherit !important;     /* 保持字体继承 */
+        color: inherit !important;           /* 保持颜色继承 */
       }
 
-      /* 移除二三级标题的伪元素 */
+      /* 暗色模式下也保持默认样式 */
+      .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+        all: revert !important;               /* 暗色模式下也完全重置 */
+        font-family: inherit !important;     /* 保持字体继承 */
+        color: inherit !important;           /* 保持颜色继承 */
+      }
+
+      /* 确保移除所有可能的伪元素 */
       h2::before, h2::after,
-      h3::before, h3::after {
-        display: none;                        /* 隐藏所有伪元素 */
+      h3::before, h3::after,
+      h4::before, h4::after,
+      h5::before, h5::after,
+      h6::before, h6::after {
+        display: none !important;            /* 强制隐藏所有伪元素 */
+        content: none !important;            /* 移除伪元素内容 */
+      }
+
+      /* 暗色模式下也移除伪元素 */
+      .dark h2::before, .dark h2::after,
+      .dark h3::before, .dark h3::after,
+      .dark h4::before, .dark h4::after,
+      .dark h5::before, .dark h5::after,
+      .dark h6::before, .dark h6::after {
+        display: none !important;            /* 强制隐藏所有伪元素 */
+        content: none !important;            /* 移除伪元素内容 */
       }
 
       /* ===== 统计板块样式优化 ===== */
