@@ -24,14 +24,9 @@ const Style = () => {
 
       /* ===== Notion链接样式覆盖 ===== */
       
-      /* 1. notion-link 元素样式覆盖 */
+      /* 1. notion-link 元素样式覆盖 - 移除下边框 */
       .notion-link {
-        border-bottom: 0.05em solid #10B981 !important; /* 添加绿色下边框 */
-      }
-
-      /* 2. 暗色模式下的notion-link */
-      .dark .notion-link {
-        border-bottom-color: #34D399 !important; /* 暗色模式亮绿色下边框 */
+        border-bottom: none !important; /* 移除下边框 */
       }
 
       /* ===== 超链接模块 - 平滑悬停动画 ===== */
