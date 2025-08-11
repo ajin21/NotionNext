@@ -64,7 +64,7 @@ const Style = () => {
         border-radius: 1px;                 /* 圆角下划线 */
       }
 
-      /* 3. 圆角矩形背景动画效果 - 平滑展开 - 排除标题内链接 */
+      /* 3. 圆角矩形背景动画效果 - 从左到右展开 - 排除标题内链接 */
       .notion-page a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::after,
       .notion-text a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::after,
       article a:not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a)::after,
@@ -72,12 +72,11 @@ const Style = () => {
         content: '';                         /* 创建伪元素 */
         position: absolute;                  /* 绝对定位 */
         top: 0;                             /* 顶部对齐 */
-        left: 50%;                          /* 水平居中 */
+        left: 0;                            /* 从左侧开始 */
         width: 0;                           /* 初始宽度为0 */
         height: 100%;                       /* 全高 */
         background: rgba(16, 185, 129, 0.12); /* 稍深的淡绿背景 */
         border-radius: 8px;                 /* 更大的圆角 */
-        transform: translateX(-50%);        /* 居中对齐 */
         transition: width 0.3s ease-out;    /* 平滑展开效果 */
         z-index: -1;                        /* 置于文字下方 */
       }
