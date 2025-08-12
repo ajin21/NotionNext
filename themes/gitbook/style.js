@@ -179,14 +179,31 @@ const Style = () => {
         box-shadow: 0 1px 3px rgba(16, 185, 129, 0.1) !important; /* 轻微阴影 */
       }
 
-      /* 2. 代码块样式 */
+      /* 2. 代码块样式 - 强化优先级 */
+      pre,
       pre code,
+      .notion-page pre,
       .notion-page pre code,
+      .notion-text pre,
       .notion-text pre code,
+      article pre,
       article pre code,
-      .post-content pre code {
+      .post-content pre,
+      .post-content pre code,
+      .notion-code,
+      .notion-code code,
+      .hljs,
+      .language-javascript,
+      .language-js,
+      .language-css,
+      .language-html,
+      .language-python,
+      .language-java,
+      .language-cpp,
+      .language-c {
         color: #059669 !important;                        /* 绿色字体 */
         background: rgba(16, 185, 129, 0.08) !important; /* 更淡的绿色背景 */
+        background-color: rgba(16, 185, 129, 0.08) !important; /* 强制背景色 */
         display: block !important;                       /* 块级元素 */
         padding: 16px !important;                        /* 内边距 */
         border-radius: 8px !important;                   /* 圆角 */
@@ -211,15 +228,53 @@ const Style = () => {
         box-shadow: 0 1px 3px rgba(52, 211, 153, 0.1) !important; /* 暗色模式阴影 */
       }
 
+      .dark pre,
       .dark pre code,
+      .dark .notion-page pre,
       .dark .notion-page pre code,
+      .dark .notion-text pre,
       .dark .notion-text pre code,
+      .dark article pre,
       .dark article pre code,
-      .dark .post-content pre code {
+      .dark .post-content pre,
+      .dark .post-content pre code,
+      .dark .notion-code,
+      .dark .notion-code code,
+      .dark .hljs,
+      .dark .language-javascript,
+      .dark .language-js,
+      .dark .language-css,
+      .dark .language-html,
+      .dark .language-python,
+      .dark .language-java,
+      .dark .language-cpp,
+      .dark .language-c {
         color: #34D399 !important;                       /* 暗色模式亮绿色字体 */
         background: rgba(52, 211, 153, 0.1) !important;  /* 暗色模式代码块背景 */
+        background-color: rgba(52, 211, 153, 0.1) !important; /* 强制暗色模式背景色 */
         border-color: rgba(52, 211, 153, 0.25) !important; /* 暗色模式代码块边框 */
         box-shadow: 0 2px 8px rgba(52, 211, 153, 0.1) !important; /* 暗色模式代码块阴影 */
+      }
+
+      /* 4. 额外强化 - 覆盖可能的第三方样式 */
+      div[class*="code"],
+      div[class*="highlight"],
+      .code-block,
+      .highlight,
+      .prism-code,
+      .token-line {
+        background: rgba(16, 185, 129, 0.08) !important; /* 强制绿色背景 */
+        background-color: rgba(16, 185, 129, 0.08) !important; /* 强制背景色 */
+      }
+
+      .dark div[class*="code"],
+      .dark div[class*="highlight"],
+      .dark .code-block,
+      .dark .highlight,
+      .dark .prism-code,
+      .dark .token-line {
+        background: rgba(52, 211, 153, 0.1) !important; /* 暗色模式强制绿色背景 */
+        background-color: rgba(52, 211, 153, 0.1) !important; /* 暗色模式强制背景色 */
       }
 
       /* ===== 引用块模块 - 绿色侧边框正文样式 ===== */
@@ -625,6 +680,174 @@ const Style = () => {
 
       .dark .powered-by a:hover {
         color: #6EE7B7;                     /* 暗色模式悬停亮绿色 */
+      }
+
+      /* ===== 评论区样式优化 - 绿色主题 ===== */
+      
+      /* 1. Valine 评论系统样式 */
+      .valine-wrapper,
+      .vwrap,
+      .vcard {
+        /* Valine 评论区容器 */
+      }
+
+      /* 2. 评论区标题样式 - 改为绿色 */
+      .valine-wrapper h3,
+      .valine-wrapper h4,
+      .vwrap h3,
+      .vwrap h4,
+      .vcard h3,
+      .vcard h4,
+      .valine-title,
+      .comment-title,
+      .vheader,
+      .vheader .title {
+        color: #10B981 !important;          /* 绿色标题 */
+        border-bottom-color: #10B981 !important; /* 绿色下边框 */
+      }
+
+      /* 3. 回复按钮样式 - 改为绿色 */
+      .vbtn,
+      .vsubmit,
+      .reply-btn,
+      .comment-reply,
+      .vat,
+      button[type="submit"],
+      input[type="submit"],
+      .valine-wrapper button,
+      .vwrap button,
+      .vcard button {
+        background-color: #10B981 !important; /* 绿色背景 */
+        border-color: #10B981 !important;   /* 绿色边框 */
+        color: white !important;            /* 白色文字 */
+      }
+
+      /* 4. 回复按钮悬停效果 */
+      .vbtn:hover,
+      .vsubmit:hover,
+      .reply-btn:hover,
+      .comment-reply:hover,
+      .vat:hover,
+      button[type="submit"]:hover,
+      input[type="submit"]:hover,
+      .valine-wrapper button:hover,
+      .vwrap button:hover,
+      .vcard button:hover {
+        background-color: #059669 !important; /* 深绿色悬停背景 */
+        border-color: #059669 !important;   /* 深绿色悬停边框 */
+      }
+
+      /* 5. 评论区链接样式 */
+      .valine-wrapper a,
+      .vwrap a,
+      .vcard a,
+      .vcomment a {
+        color: #10B981 !important;          /* 绿色链接 */
+      }
+
+      .valine-wrapper a:hover,
+      .vwrap a:hover,
+      .vcard a:hover,
+      .vcomment a:hover {
+        color: #059669 !important;          /* 深绿色悬停链接 */
+      }
+
+      /* 6. 暗色模式下的评论区样式 */
+      .dark .valine-wrapper h3,
+      .dark .valine-wrapper h4,
+      .dark .vwrap h3,
+      .dark .vwrap h4,
+      .dark .vcard h3,
+      .dark .vcard h4,
+      .dark .valine-title,
+      .dark .comment-title,
+      .dark .vheader,
+      .dark .vheader .title {
+        color: #34D399 !important;          /* 暗色模式亮绿色标题 */
+        border-bottom-color: #34D399 !important; /* 暗色模式绿色下边框 */
+      }
+
+      .dark .vbtn,
+      .dark .vsubmit,
+      .dark .reply-btn,
+      .dark .comment-reply,
+      .dark .vat,
+      .dark button[type="submit"],
+      .dark input[type="submit"],
+      .dark .valine-wrapper button,
+      .dark .vwrap button,
+      .dark .vcard button {
+        background-color: #34D399 !important; /* 暗色模式亮绿色背景 */
+        border-color: #34D399 !important;   /* 暗色模式绿色边框 */
+      }
+
+      .dark .vbtn:hover,
+      .dark .vsubmit:hover,
+      .dark .reply-btn:hover,
+      .dark .comment-reply:hover,
+      .dark .vat:hover,
+      .dark button[type="submit"]:hover,
+      .dark input[type="submit"]:hover,
+      .dark .valine-wrapper button:hover,
+      .dark .vwrap button:hover,
+      .dark .vcard button:hover {
+        background-color: #10B981 !important; /* 暗色模式深绿色悬停 */
+        border-color: #10B981 !important;   /* 暗色模式深绿色悬停边框 */
+      }
+
+      .dark .valine-wrapper a,
+      .dark .vwrap a,
+      .dark .vcard a,
+      .dark .vcomment a {
+        color: #34D399 !important;          /* 暗色模式亮绿色链接 */
+      }
+
+      .dark .valine-wrapper a:hover,
+      .dark .vwrap a:hover,
+      .dark .vcard a:hover,
+      .dark .vcomment a:hover {
+        color: #6EE7B7 !important;          /* 暗色模式更亮绿色悬停链接 */
+      }
+
+      /* 7. 其他评论系统兼容 - Giscus, Gitalk, Twikoo 等 */
+      .giscus,
+      .gitalk-container,
+      .twikoo,
+      .utterances,
+      .waline {
+        /* 通用评论系统容器 */
+      }
+
+      .giscus h3,
+      .giscus h4,
+      .gitalk-container h3,
+      .gitalk-container h4,
+      .twikoo h3,
+      .twikoo h4,
+      .utterances h3,
+      .utterances h4,
+      .waline h3,
+      .waline h4 {
+        color: #10B981 !important;          /* 绿色标题 */
+      }
+
+      .giscus button,
+      .gitalk-container button,
+      .twikoo button,
+      .utterances button,
+      .waline button {
+        background-color: #10B981 !important; /* 绿色按钮 */
+        border-color: #10B981 !important;   /* 绿色边框 */
+        color: white !important;            /* 白色文字 */
+      }
+
+      .giscus button:hover,
+      .gitalk-container button:hover,
+      .twikoo button:hover,
+      .utterances button:hover,
+      .waline button:hover {
+        background-color: #059669 !important; /* 深绿色悬停 */
+        border-color: #059669 !important;   /* 深绿色悬停边框 */
       }
 
     `}</style>
