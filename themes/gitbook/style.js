@@ -701,12 +701,13 @@ const Style = () => {
       .valine-title,
       .comment-title,
       .vheader,
-      .vheader .title {
+      .vheader .title,
+      #comment > div > ul > li {
         color: #10B981 !important;          /* 绿色标题 */
         border-bottom-color: #10B981 !important; /* 绿色下边框 */
       }
 
-      /* 3. 回复按钮样式 - 改为绿色 */
+      /* 3. 回复按钮样式 - 绿色字体无背景 */
       .vbtn,
       .vsubmit,
       .reply-btn,
@@ -717,9 +718,9 @@ const Style = () => {
       .valine-wrapper button,
       .vwrap button,
       .vcard button {
-        background-color: #10B981 !important; /* 绿色背景 */
+        background-color: transparent !important; /* 透明背景 */
         border-color: #10B981 !important;   /* 绿色边框 */
-        color: white !important;            /* 白色文字 */
+        color: #10B981 !important;          /* 绿色文字 */
       }
 
       /* 4. 回复按钮悬停效果 */
@@ -733,8 +734,9 @@ const Style = () => {
       .valine-wrapper button:hover,
       .vwrap button:hover,
       .vcard button:hover {
-        background-color: #059669 !important; /* 深绿色悬停背景 */
+        background-color: transparent !important; /* 悬停时仍然透明背景 */
         border-color: #059669 !important;   /* 深绿色悬停边框 */
+        color: #059669 !important;          /* 深绿色悬停文字 */
       }
 
       /* 5. 评论区链接样式 */
@@ -777,8 +779,9 @@ const Style = () => {
       .dark .valine-wrapper button,
       .dark .vwrap button,
       .dark .vcard button {
-        background-color: #34D399 !important; /* 暗色模式亮绿色背景 */
+        background-color: transparent !important; /* 暗色模式透明背景 */
         border-color: #34D399 !important;   /* 暗色模式绿色边框 */
+        color: #34D399 !important;          /* 暗色模式绿色文字 */
       }
 
       .dark .vbtn:hover,
@@ -791,8 +794,9 @@ const Style = () => {
       .dark .valine-wrapper button:hover,
       .dark .vwrap button:hover,
       .dark .vcard button:hover {
-        background-color: #10B981 !important; /* 暗色模式深绿色悬停 */
-        border-color: #10B981 !important;   /* 暗色模式深绿色悬停边框 */
+        background-color: transparent !important; /* 暗色模式悬停时仍然透明背景 */
+        border-color: #6EE7B7 !important;   /* 暗色模式更亮绿色悬停边框 */
+        color: #6EE7B7 !important;          /* 暗色模式更亮绿色悬停文字 */
       }
 
       .dark .valine-wrapper a,
