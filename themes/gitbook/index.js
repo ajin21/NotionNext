@@ -627,7 +627,7 @@ const LayoutSignUp = props => {
 
 /**
  * 仪表盘
- * @param {*} props
+ * @param {*} propss
  * @returns
  */
 const LayoutDashboard = props => {
