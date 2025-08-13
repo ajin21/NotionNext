@@ -16,7 +16,7 @@ import { getShortId } from '@/lib/utils/pageId'
 import { SignIn, SignUp } from '@clerk/nextjs'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
-import SmartLink from '@/components/SmartLink'
+
 import { useRouter } from 'next/router'
 import { createContext, useContext, useEffect, useRef, useState } from 'react'
 import Announcement from './components/Announcement'
