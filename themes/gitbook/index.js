@@ -16,7 +16,7 @@ import { getShortId } from '@/lib/utils/pageId'
 import { SignIn, SignUp } from '@clerk/nextjs'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
-import Link from 'next/link'
+import SmartLink from '@/components/SmartLink'
 import { useRouter } from 'next/router'
 import { createContext, useContext, useEffect, useRef, useState } from 'react'
 import Announcement from './components/Announcement'
@@ -331,51 +331,6 @@ const LayoutSlug = props => {
         }
       }, waiting404)
     }
-
-    // 处理外部链接
-    if (post && isBrowser) {
-      const handleExternalLinks = () => {
-        const links = document.querySelectorAll('#article-wrapper a[href]')
-        
-        links.forEach(link => {
-          const href = link.getAttribute('href')
-          
-          // 检查是否为外部链接
-          if (href && 
-              href.startsWith('http') && 
-              !href.includes('localhost') && 
-              !href.includes('127.0.0.1') &&
-              !href.includes(window.location.hostname)) {
-            
-            // 设置外部链接属性
-            link.setAttribute('target', '_blank')
-            link.setAttribute('rel', 'noopener noreferrer')
-          }
-        })
-      }
-
-      // 延时处理，确保文章内容已加载
-      const timer = setTimeout(handleExternalLinks, 1000)
-      
-      // 监听DOM变化，处理动态添加的链接
-      const observer = new MutationObserver(() => {
-        handleExternalLinks()
-      })
-      
-      const articleWrapper = document.querySelector('#article-wrapper')
-      if (articleWrapper) {
-        observer.observe(articleWrapper, {
-          childList: true,
-          subtree: true
-        })
-      }
-
-      // 清理函数
-      return () => {
-        clearTimeout(timer)
-        observer.disconnect()
-      }
-    }
   }, [post])
   return (
     <>
@@ -524,7 +479,7 @@ const LayoutCategoryIndex = props => {
         <div id='category-list' className='duration-200 flex flex-wrap'>
           {categoryOptions?.map(category => {
             return (
-              <Link
+              <SmartLink
                 key={category.name}
                 href={`/category/${category.name}`}
                 passHref
@@ -536,7 +491,7 @@ const LayoutCategoryIndex = props => {
                   <i className='mr-4 fas fa-folder' />
                   {category.name}({category.count})
                 </div>
-              </Link>
+              </SmartLink>
             )
           })}
         </div>
