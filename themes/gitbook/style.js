@@ -277,28 +277,44 @@ const Style = () => {
         background-color: rgba(52, 211, 153, 0.1) !important; /* 暗色模式强制背景色 */
       }
 
-      /* ===== 引用块模块 - 绿色侧边框正文样式 ===== */
+      /* ===== 引用块模块 - 强制绿色样式 ===== */
       
-      /* 1. 引用块基础样式 - 绿色侧边框，正文样式 */
-      blockquote {
-        background: transparent;               /* 透明背景，和正文一样 */
-        border-left: 4px solid #10B981;       /* 绿色侧边框 */
-        padding: 16px 20px;                   /* 适中的内边距 */
-        margin: 20px 0;                       /* 标准间距 */
-        border-radius: 0;                     /* 无圆角，保持简洁 */
-        font-style: normal;                   /* 正常字体，不斜体 */
-        color: inherit;                       /* 继承正文颜色 */
-        font-size: 16px;                      /* 固定字体大小为16px */
-        font-weight: inherit;                 /* 继承正文字重 */
-        line-height: inherit;                 /* 继承正文行高 */
-        position: relative;                   /* 为伪元素定位 */
+      /* 1. 引用块基础样式 - 强制绿色侧边框和字体 */
+      blockquote,
+      .notion-page blockquote,
+      .notion-text blockquote,
+      article blockquote,
+      .post-content blockquote,
+      div blockquote,
+      section blockquote {
+        background: transparent !important;        /* 强制透明背景 */
+        border-left: 4px solid #10B981 !important; /* 强制绿色侧边框 */
+        border-right: none !important;            /* 移除右边框 */
+        border-top: none !important;              /* 移除上边框 */
+        border-bottom: none !important;           /* 移除下边框 */
+        padding: 16px 20px !important;            /* 强制内边距 */
+        margin: 20px 0 !important;                /* 强制外边距 */
+        border-radius: 0 !important;              /* 强制无圆角 */
+        font-style: normal !important;            /* 强制正常字体 */
+        color: #059669 !important;                /* 强制绿色字体 */
+        font-size: 16px !important;               /* 强制16px字体大小 */
+        font-weight: inherit !important;          /* 继承字重 */
+        line-height: inherit !important;          /* 继承行高 */
+        position: relative !important;            /* 为伪元素定位 */
       }
 
-      /* 2. 暗色模式下的引用块样式 */
-      .dark blockquote {
-        background: transparent;              /* 暗色模式透明背景 */
-        border-left-color: #34D399;          /* 暗色模式绿色侧边框 */
-        color: inherit;                       /* 继承暗色模式正文颜色 */
+      /* 2. 暗色模式下的引用块样式 - 强制覆盖 */
+      .dark blockquote,
+      .dark .notion-page blockquote,
+      .dark .notion-text blockquote,
+      .dark article blockquote,
+      .dark .post-content blockquote,
+      .dark div blockquote,
+      .dark section blockquote {
+        background: transparent !important;        /* 强制暗色模式透明背景 */
+        border-left-color: #34D399 !important;    /* 强制暗色模式绿色侧边框 */
+        color: #34D399 !important;                /* 强制暗色模式亮绿色字体 */
+        font-size: 16px !important;               /* 强制16px字体大小 */
       }
 
       /* ===== 一级标题模块 - 静态美化效果 ===== */
