@@ -279,7 +279,7 @@ const Style = () => {
 
       /* ===== 引用块模块 - 美观圆角卡片设计 ===== */
       
-      /* 1. 引用块基础样式 - 现代卡片风格 */
+      /* 1. 引用块基础样式 - 现代卡片风格，无悬停效果 */
       blockquote,
       .notion-page blockquote,
       .notion-text blockquote,
@@ -288,35 +288,21 @@ const Style = () => {
       div blockquote,
       section blockquote {
         background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.02) 100%) !important; /* 淡绿色渐变背景 */
-        border: 1px solid rgba(16, 185, 129, 0.2) !important; /* 淡绿色边框 */
-        border-left: 4px solid #10B981 !important; /* 绿色左侧重点边框 */
+        border: 1px solid rgba(16, 185, 129, 0.3) !important; /* 使用原悬停时的边框颜色 */
+        border-left: 4px solid rgba(16, 185, 129, 0.3) !important; /* 左侧边框也使用悬停颜色 */
         padding: 20px 24px !important;            /* 舒适的内边距 */
         margin: 24px 0 !important;                /* 适当的外边距 */
-        border-radius: 12px !important;           /* 圆角设计 */
+        border-radius: 18px !important;           /* 更圆润的圆角设计 */
         font-style: normal !important;            /* 正常字体样式 */
         color: inherit !important;                /* 继承正文颜色，不强制绿色 */
         font-size: 16px !important;               /* 16px字体大小 */
         font-weight: inherit !important;          /* 继承字重 */
         line-height: 1.6 !important;              /* 舒适的行高 */
         position: relative !important;            /* 为伪元素定位 */
-        box-shadow: 0 2px 8px rgba(16, 185, 129, 0.08) !important; /* 轻微绿色阴影 */
-        transition: all 0.3s ease !important;     /* 平滑过渡效果 */
+        box-shadow: 0 4px 16px rgba(16, 185, 129, 0.12) !important; /* 使用原悬停时的阴影 */
       }
 
-      /* 2. 引用块悬停效果 */
-      blockquote:hover,
-      .notion-page blockquote:hover,
-      .notion-text blockquote:hover,
-      article blockquote:hover,
-      .post-content blockquote:hover,
-      div blockquote:hover,
-      section blockquote:hover {
-        transform: translateY(-2px) !important;   /* 轻微上移 */
-        box-shadow: 0 4px 16px rgba(16, 185, 129, 0.12) !important; /* 增强阴影 */
-        border-color: rgba(16, 185, 129, 0.3) !important; /* 加深边框 */
-      }
-
-      /* 3. 暗色模式下的引用块样式 */
+      /* 2. 暗色模式下的引用块样式 */
       .dark blockquote,
       .dark .notion-page blockquote,
       .dark .notion-text blockquote,
@@ -325,24 +311,12 @@ const Style = () => {
       .dark div blockquote,
       .dark section blockquote {
         background: linear-gradient(135deg, rgba(52, 211, 153, 0.08) 0%, rgba(52, 211, 153, 0.03) 100%) !important; /* 暗色模式渐变背景 */
-        border: 1px solid rgba(52, 211, 153, 0.25) !important; /* 暗色模式边框 */
-        border-left-color: #34D399 !important;    /* 暗色模式绿色左边框 */
+        border: 1px solid rgba(52, 211, 153, 0.4) !important; /* 暗色模式使用原悬停边框颜色 */
+        border-left: 4px solid rgba(52, 211, 153, 0.4) !important; /* 暗色模式左边框使用悬停颜色 */
         color: inherit !important;                /* 继承暗色模式正文颜色 */
         font-size: 16px !important;               /* 16px字体大小 */
-        box-shadow: 0 2px 8px rgba(52, 211, 153, 0.1) !important; /* 暗色模式阴影 */
-      }
-
-      /* 4. 暗色模式悬停效果 */
-      .dark blockquote:hover,
-      .dark .notion-page blockquote:hover,
-      .dark .notion-text blockquote:hover,
-      .dark article blockquote:hover,
-      .dark .post-content blockquote:hover,
-      .dark div blockquote:hover,
-      .dark section blockquote:hover {
-        transform: translateY(-2px) !important;   /* 轻微上移 */
-        box-shadow: 0 4px 16px rgba(52, 211, 153, 0.15) !important; /* 暗色模式增强阴影 */
-        border-color: rgba(52, 211, 153, 0.4) !important; /* 暗色模式加深边框 */
+        border-radius: 18px !important;           /* 更圆润的圆角设计 */
+        box-shadow: 0 4px 16px rgba(52, 211, 153, 0.15) !important; /* 暗色模式使用原悬停阴影 */
       }
 
       /* ===== 一级标题模块 - 静态美化效果 ===== */
